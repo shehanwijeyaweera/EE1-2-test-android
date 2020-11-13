@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView textViewBooks;
 
+    private BookstoreApi bookstoreApi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +31,13 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        BookstoreApi bookstoreApi = retrofit.create(BookstoreApi.class);
+        bookstoreApi = retrofit.create(BookstoreApi.class);
 
+        //getbooks();
+        getbookdetails();
+    }
+
+    private void getbooks() {
         Call<List<Book>> call = bookstoreApi.getBooks();
 
         call.enqueue(new Callback<List<Book>>() {
@@ -52,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                     content += "publisher: "+ book.getPublisher() + "\n";
                     content += "pubdate: "+ book.getPubdate() + "\n";
                     content += "isbn: "+ book.getIsbn() + "\n";
-                    content += "Logo Image path: " + book.getImagepath() + "\n";
+                    content += "Logo Image path: " + book.getImagepath() + "\n\n";
 
                     textViewBooks.append(content);
                 }
@@ -60,6 +67,41 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Book>> call, Throwable t) {
+                textViewBooks.setText(t.getMessage());
+            }
+        });
+    }
+
+    private void getbookdetails(){
+        Call<Book> call = bookstoreApi.getBookdetails(33);
+
+        call.enqueue(new Callback<Book>() {
+            @Override
+            public void onResponse(Call<Book> call, Response<Book> response) {
+                if(!response.isSuccessful()){
+                    textViewBooks.setText("Code: " + response.code());
+                    return;
+                }
+
+                Book booksobj = response.body();
+
+
+                    String content ="";
+                    content += "ID: "+ booksobj.getBookId() + "\n";
+                    content += "Title: "+ booksobj.getTitle() + "\n";
+                    content += "description: "+ booksobj.getDescription() + "\n";
+                    content += "price(Rs.): "+ booksobj.getPrice() + "\n";
+                    content += "publisher: "+ booksobj.getPublisher() + "\n";
+                    content += "pubdate: "+ booksobj.getPubdate() + "\n";
+                    content += "isbn: "+ booksobj.getIsbn() + "\n";
+                    content += "Logo Image path: " + booksobj.getImagepath() + "\n\n";
+
+                    textViewBooks.append(content);
+
+            }
+
+            @Override
+            public void onFailure(Call<Book> call, Throwable t) {
                 textViewBooks.setText(t.getMessage());
             }
         });

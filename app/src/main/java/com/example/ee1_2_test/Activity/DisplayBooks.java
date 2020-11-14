@@ -1,9 +1,13 @@
-package com.example.ee1_2_test;
+package com.example.ee1_2_test.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.example.ee1_2_test.API.BookstoreApi;
+import com.example.ee1_2_test.Model.Book;
+import com.example.ee1_2_test.R;
 
 import java.util.List;
 

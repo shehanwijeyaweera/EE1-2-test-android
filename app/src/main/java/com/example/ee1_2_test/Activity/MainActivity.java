@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.ee1_2_test.API.BookstoreApi;
+import com.example.ee1_2_test.Model.ApiClient;
 import com.example.ee1_2_test.Model.loginResponse;
 import com.example.ee1_2_test.R;
 
@@ -56,24 +57,14 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Enter Username and password", Toast.LENGTH_SHORT).show();
                 }
 
-//                if(username1.equals("Admin") && password1.equals("Admin")){
-//                    Intent myIntent = new Intent(MainActivity.this, DisplayBooks.class);
-//                    MainActivity.this.startActivity(myIntent);
-//                }
-//                else {
-//                    Toast.makeText(getApplicationContext(),"Invalid Username or password", Toast.LENGTH_SHORT).show();
-//                }
             }
         });
     }
 
     private void loginfunction(String username, String password) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.8.120:8080/api/v1/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+
         
-        bookstoreApi = retrofit.create(BookstoreApi.class);
+        bookstoreApi = ApiClient.getClient().create(BookstoreApi.class);
 
         Call<loginResponse> call = bookstoreApi.getloginRespones(username, password);
 

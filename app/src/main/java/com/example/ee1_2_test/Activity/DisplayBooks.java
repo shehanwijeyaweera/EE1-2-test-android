@@ -41,6 +41,11 @@ public class DisplayBooks extends AppCompatActivity {
         //getbookdetails();
     }
 
+    @Override
+    public void onBackPressed() {
+        // Do Here what ever you want do on back press;
+    }
+
     private void getbooks() {
         Call<List<Book>> call = bookstoreApi.getBooks();
 

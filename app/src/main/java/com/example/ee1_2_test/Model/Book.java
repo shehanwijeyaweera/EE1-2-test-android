@@ -1,96 +1,120 @@
 package com.example.ee1_2_test.Model;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.time.LocalDate;
 
 public class Book {
 
-    @SerializedName("bookId")
-    private int bookId;
+        @SerializedName("bookId")
+        @Expose
+        private Integer bookId;
+        @SerializedName("title")
+        @Expose
+        private String title;
+        @SerializedName("description")
+        @Expose
+        private String description;
+        @SerializedName("price")
+        @Expose
+        private Double price;
+        @SerializedName("publisher")
+        @Expose
+        private String publisher;
+        @SerializedName("logo")
+        @Expose
+        private String logo;
+        @SerializedName("pubdate")
+        @Expose
+        private String pubdate;
+        @SerializedName("isbn")
+        @Expose
+        private Integer isbn;
+        @SerializedName("logoImagepathApi")
+        @Expose
+        private String logoImagepathApi;
+        @SerializedName("logoImagePath")
+        @Expose
+        private String logoImagePath;
 
-    @SerializedName("title")
-    private String title;
+        public Integer getBookId() {
+            return bookId;
+        }
 
-    @SerializedName("description")
-    private String description;
+        public void setBookId(Integer bookId) {
+            this.bookId = bookId;
+        }
 
-    @SerializedName("price")
-    private double price;
+        public String getTitle() {
+            return title;
+        }
 
-    @SerializedName("publisher")
-    private String publisher;
+        public void setTitle(String title) {
+            this.title = title;
+        }
 
-    @SerializedName("pubdate")
-    private String pubdate;
+        public String getDescription() {
+            return description;
+        }
 
-    @SerializedName("isbn")
-    private int isbn;
+        public void setDescription(String description) {
+            this.description = description;
+        }
 
-    @SerializedName("logoImagePath")
-    private String imagepath;
+        public Double getPrice() {
+            return price;
+        }
 
-    public int getBookId() {
-        return bookId;
-    }
+        public void setPrice(Double price) {
+            this.price = price;
+        }
 
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
-    }
+        public String getPublisher() {
+            return publisher;
+        }
 
-    public String getTitle() {
-        return title;
-    }
+        public void setPublisher(String publisher) {
+            this.publisher = publisher;
+        }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+        public String getLogo() {
+            return logo;
+        }
 
-    public String getDescription() {
-        return description;
-    }
+        public void setLogo(String logo) {
+            this.logo = logo;
+        }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+        public String getPubdate() {
+            return pubdate;
+        }
 
-    public double getPrice() {
-        return price;
-    }
+        public void setPubdate(String pubdate) {
+            this.pubdate = pubdate;
+        }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
 
-    public String getPublisher() {
-        return publisher;
-    }
+        public Integer getIsbn() {
+            return isbn;
+        }
 
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
-    }
+        public void setIsbn(Integer isbn) {
+            this.isbn = isbn;
+        }
 
-    public String getPubdate() {
-        return pubdate;
-    }
+        public String getLogoImagepathApi() {
+            return logoImagepathApi;
+        }
 
-    public void setPubdate(String pubdate) {
-        this.pubdate = pubdate;
-    }
+        public void setLogoImagepathApi(String logoImagepathApi) {
+            this.logoImagepathApi = logoImagepathApi;
+        }
 
-    public int getIsbn() {
-        return isbn;
-    }
+        public String getLogoImagePath() {
+            return logoImagePath;
+        }
 
-    public void setIsbn(int isbn) {
-        this.isbn = isbn;
-    }
-
-    public String getImagepath() {
-        return imagepath;
-    }
-
-    public void setImagepath(String imagepath) {
-        this.imagepath = imagepath;
-    }
+        public void setLogoImagePath(String logoImagePath) {
+            this.logoImagePath = logoImagePath;
+        }
 }

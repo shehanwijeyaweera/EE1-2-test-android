@@ -1,14 +1,20 @@
 package com.example.ee1_2_test.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.Adapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ee1_2_test.API.BookstoreApi;
+import com.example.ee1_2_test.Model.ApiClient;
 import com.example.ee1_2_test.Model.Book;
 import com.example.ee1_2_test.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -23,22 +29,43 @@ public class DisplayBooks extends AppCompatActivity {
 
     private BookstoreApi bookstoreApi;
 
+    ArrayList<Book> books = new ArrayList<>();
+
+    private BooksAdapter booksAdapter;
+
+    private RecyclerView books_recyclerview;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_books);
 
-        textViewBooks = findViewById(R.id.book_results);
+        books_recyclerview=(RecyclerView)findViewById(R.id.books_recyclerview);
+        books_recyclerview.setLayoutManager(new LinearLayoutManager(this));
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.8.120:8080/api/v1/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        getResponse();
 
-        bookstoreApi = retrofit.create(BookstoreApi.class);
+    }
 
-        getbooks();
-        //getbookdetails();
+    private void getResponse() {
+        bookstoreApi = ApiClient.getClient().create(BookstoreApi.class);
+
+        Call<List<Book>> call = bookstoreApi.getBooks();
+
+        call.enqueue(new Callback<List<Book>>() {
+            @Override
+            public void onResponse(Call<List<Book>> call, Response<List<Book>> response) {
+                books = new ArrayList<>(response.body());
+                booksAdapter= new BooksAdapter(DisplayBooks.this, books);
+                books_recyclerview.setAdapter(booksAdapter);
+                Toast.makeText(DisplayBooks.this, "Success",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<List<Book>> call, Throwable t) {
+                Toast.makeText(DisplayBooks.this, "Failed",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -68,7 +95,7 @@ public class DisplayBooks extends AppCompatActivity {
                     content += "publisher: "+ book.getPublisher() + "\n";
                     content += "pubdate: "+ book.getPubdate() + "\n";
                     content += "isbn: "+ book.getIsbn() + "\n";
-                    content += "Logo Image path: " + book.getImagepath() + "\n\n";
+                    content += "Logo Image path: " + book.getLogoImagepathApi() + "\n\n";
 
                     textViewBooks.append(content);
                 }
@@ -81,38 +108,4 @@ public class DisplayBooks extends AppCompatActivity {
         });
     }
 
-    private void getbookdetails(){
-        Call<Book> call = bookstoreApi.getBookdetails(33);
-
-        call.enqueue(new Callback<Book>() {
-            @Override
-            public void onResponse(Call<Book> call, Response<Book> response) {
-                if(!response.isSuccessful()){
-                    textViewBooks.setText("Code: " + response.code());
-                    return;
-                }
-
-                Book booksobj = response.body();
-
-
-                String content ="";
-                content += "ID: "+ booksobj.getBookId() + "\n";
-                content += "Title: "+ booksobj.getTitle() + "\n";
-                content += "description: "+ booksobj.getDescription() + "\n";
-                content += "price(Rs.): "+ booksobj.getPrice() + "\n";
-                content += "publisher: "+ booksobj.getPublisher() + "\n";
-                content += "pubdate: "+ booksobj.getPubdate() + "\n";
-                content += "isbn: "+ booksobj.getIsbn() + "\n";
-                content += "Logo Image path: " + booksobj.getImagepath() + "\n\n";
-
-                textViewBooks.append(content);
-
-            }
-
-            @Override
-            public void onFailure(Call<Book> call, Throwable t) {
-                textViewBooks.setText(t.getMessage());
-            }
-        });
-    }
 }

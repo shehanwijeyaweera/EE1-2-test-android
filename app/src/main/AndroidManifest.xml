@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EE12test">
-        <activity android:name=".Activity.DisplayBooks"></activity>
+        <activity android:name=".Activity.Single_book_view"></activity>
+        <activity android:name=".Activity.DisplayBooks" />
 
         <meta-data
             android:name="com.google.android.actions"

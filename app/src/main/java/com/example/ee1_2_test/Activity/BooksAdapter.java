@@ -1,6 +1,8 @@
 package com.example.ee1_2_test.Activity;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ee1_2_test.Model.Book;
@@ -40,6 +43,19 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
         holder.book_desc.setText(books.get(position).getDescription());
 
         Picasso.get().load(books.get(position).getLogoImagepathApi()).into(holder.book_image);
+
+        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Single_book_view.class);
+                intent.putExtra("title", books.get(position).getTitle());
+                intent.putExtra("price", books.get(position).getPrice());
+                intent.putExtra("isbn", books.get(position).getIsbn());
+                intent.putExtra("desc", books.get(position).getDescription());
+                intent.putExtra("imageLocation", books.get(position).getLogoImagepathApi());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -51,12 +67,14 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
         private ImageView book_image;
         private TextView book_title;
         private TextView book_desc;
+        private ConstraintLayout mainLayout;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             book_image=(ImageView)itemView.findViewById(R.id.book_image);
             book_title=(TextView) itemView.findViewById(R.id.book_title);
             book_desc=(TextView) itemView.findViewById(R.id.book_desc);
+            mainLayout= (ConstraintLayout) itemView.findViewById(R.id.mainLayout);
         }
     }
 }

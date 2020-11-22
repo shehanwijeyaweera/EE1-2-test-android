@@ -2,18 +2,23 @@ package com.example.ee1_2_test.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ee1_2_test.R;
+import com.example.ee1_2_test.Sessions.SessionManagement;
 import com.squareup.picasso.Picasso;
 
 public class Single_book_view extends AppCompatActivity {
 
     ImageView mainImageview;
     TextView title, price, isbn, desc;
+    Button logout_btn;
 
     String title1, desc1, imagelocation1;
     double price1;
@@ -29,6 +34,9 @@ public class Single_book_view extends AppCompatActivity {
         price = findViewById(R.id.tvPrice);
         isbn = findViewById(R.id.tvIsbn);
         desc = findViewById(R.id.tvDesc);
+        logout_btn = findViewById(R.id.logoutbtn);
+
+
 
         getData();
         setData();
@@ -55,5 +63,18 @@ public class Single_book_view extends AppCompatActivity {
             isbn.setText(String.valueOf(isbn1));
             desc.setText(desc1);
             Picasso.get().load(imagelocation1).into(mainImageview);
+    }
+
+    public void Logout(View view) {
+        SessionManagement sessionManagement = new SessionManagement(Single_book_view.this);
+        sessionManagement.removeSession();
+        
+        moveToLogin();
+    }
+
+    private void moveToLogin() {
+        Intent intent = new Intent(Single_book_view.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }

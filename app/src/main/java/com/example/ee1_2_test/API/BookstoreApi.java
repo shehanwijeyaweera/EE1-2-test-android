@@ -2,6 +2,7 @@ package com.example.ee1_2_test.API;
 
 import com.example.ee1_2_test.Model.Book;
 import com.example.ee1_2_test.Model.loginResponse;
+import com.example.ee1_2_test.Model.loginResponse2;
 
 import java.util.List;
 
@@ -18,5 +19,5 @@ public interface BookstoreApi {
     Call<Book> getBookdetails(@Path("id") int bookid);
 
     @GET("login/{username}/{password}")
-    Call<loginResponse> getloginRespones(@Path("username")String username, @Path("password")String password);
+    Call<loginResponse2> getloginRespones(@Path("username")String username, @Path("password")String password);
 }

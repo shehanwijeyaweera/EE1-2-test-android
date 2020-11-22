@@ -5,11 +5,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.Adapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ee1_2_test.API.BookstoreApi;
+import com.example.ee1_2_test.Adapters.BooksAdapter;
 import com.example.ee1_2_test.Model.ApiClient;
 import com.example.ee1_2_test.Model.Book;
 import com.example.ee1_2_test.R;
@@ -20,8 +20,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DisplayBooks extends AppCompatActivity {
 

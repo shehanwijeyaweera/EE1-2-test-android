@@ -11,9 +11,18 @@ import android.widget.Toast;
 
 import com.example.ee1_2_test.API.BookstoreApi;
 import com.example.ee1_2_test.Model.ApiClient;
+import com.example.ee1_2_test.Model.User;
 import com.example.ee1_2_test.Model.loginResponse;
+import com.example.ee1_2_test.Model.loginResponse2;
 import com.example.ee1_2_test.R;
+import com.example.ee1_2_test.Sessions.SessionManagement;
+import com.google.gson.Gson;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 import retrofit2.Call;
@@ -66,26 +75,28 @@ public class MainActivity extends AppCompatActivity {
         
         bookstoreApi = ApiClient.getClient().create(BookstoreApi.class);
 
-        Call<loginResponse> call = bookstoreApi.getloginRespones(username, password);
+        Call<loginResponse2> call = bookstoreApi.getloginRespones(username, password);
 
-        call.enqueue(new Callback<loginResponse>() {
+        call.enqueue(new Callback<loginResponse2>() {
             @Override
-            public void onResponse(Call<loginResponse> call, Response<loginResponse> response) {
+            public void onResponse(Call<loginResponse2> call, Response<loginResponse2> response) {
 
                 if(!response.isSuccessful()){
                     Toast.makeText(getApplicationContext(),"Error Response", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                loginResponse loginRes = response.body();
+                loginResponse2 loginRes = response.body();
+
 
                 if(loginRes.getResponse().equalsIgnoreCase("Correct")){
-                    Toast.makeText(getApplicationContext(),"Login Success : "+loginRes.getUsername(), Toast.LENGTH_SHORT).show();
-                    Intent myIntent = new Intent(MainActivity.this, DisplayBooks.class);
-                    MainActivity.this.startActivity(myIntent);
+                    Toast.makeText(getApplicationContext(),"Login Success : "+loginRes.getUser().getUsername(), Toast.LENGTH_SHORT).show();
+                    SessionManagement sessionManagement = new SessionManagement(MainActivity.this);
+                    sessionManagement.saveSession(loginRes.getUser());
+                   moveToMainActivity();
                 }
                 else if(loginRes.getResponse().equalsIgnoreCase("Wrong")){
-                    Toast.makeText(getApplicationContext(),"Login Error : "+loginRes.getUsername(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Login Error : "+loginRes.getUser().getUsername(), Toast.LENGTH_SHORT).show();
                 }
                 else{
                     Toast.makeText(getApplicationContext(),"Login Error", Toast.LENGTH_SHORT).show();
@@ -93,11 +104,34 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<loginResponse> call, Throwable t) {
+            public void onFailure(Call<loginResponse2> call, Throwable t) {
                 Toast.makeText(getApplicationContext(),"Respones Error", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
+    private void moveToMainActivity() {
+        Intent myIntent = new Intent(MainActivity.this, DisplayBooks.class);
+        MainActivity.this.startActivity(myIntent);
+    }
 
+    @Override
+    protected void onStart() {
+        //check if user has logged in
+        super.onStart();
+
+        checkSession();
+    }
+
+    private void checkSession() {
+        SessionManagement sessionManagement = new SessionManagement(MainActivity.this);
+        final User user =  sessionManagement.getSession();
+
+        if(user != null){
+            moveToMainActivity();
+        }
+        else {
+            //do nothing
+        }
+    }
 }

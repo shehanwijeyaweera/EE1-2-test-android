@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.ee1_2_test.API.BookstoreApi;
 import com.example.ee1_2_test.Model.ApiClient;
+import com.example.ee1_2_test.Model.Role;
 import com.example.ee1_2_test.Model.User;
 import com.example.ee1_2_test.Model.loginResponse;
 import com.example.ee1_2_test.Model.loginResponse2;
@@ -92,8 +93,13 @@ public class MainActivity extends AppCompatActivity {
                 if(loginRes.getResponse().equalsIgnoreCase("Correct")){
                     Toast.makeText(getApplicationContext(),"Login Success : "+loginRes.getUser().getUsername(), Toast.LENGTH_SHORT).show();
                     SessionManagement sessionManagement = new SessionManagement(MainActivity.this);
-                    sessionManagement.saveSession(loginRes.getUser());
-                   moveToMainActivity();
+                    sessionManagement.saveSession(loginRes.getUser(), loginRes.getRole());
+                    String role = sessionManagement.getRole();
+                    if(role.equalsIgnoreCase("Admin")){
+                        moveToAdminDashboard();
+                    }else if(role.equalsIgnoreCase("User")) {
+                        moveToMainActivity();
+                    }
                 }
                 else if(loginRes.getResponse().equalsIgnoreCase("Wrong")){
                     Toast.makeText(getApplicationContext(),"Login Error : "+loginRes.getUser().getUsername(), Toast.LENGTH_SHORT).show();
@@ -126,12 +132,24 @@ public class MainActivity extends AppCompatActivity {
     private void checkSession() {
         SessionManagement sessionManagement = new SessionManagement(MainActivity.this);
         final User user =  sessionManagement.getSession();
+        final String role = sessionManagement.getRole();
 
         if(user != null){
-            moveToMainActivity();
+
+            if(role.equalsIgnoreCase("Admin")){
+                moveToAdminDashboard();
+            }
+            else if(role.equalsIgnoreCase("User")){
+                moveToMainActivity();
+            }
         }
         else {
             //do nothing
         }
+    }
+
+    private void moveToAdminDashboard() {
+        Intent myIntent = new Intent(MainActivity.this, AdminDashboard.class);
+        MainActivity.this.startActivity(myIntent);
     }
 }

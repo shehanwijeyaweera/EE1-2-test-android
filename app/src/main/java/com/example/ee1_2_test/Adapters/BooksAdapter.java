@@ -43,7 +43,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
         holder.book_title.setText(books.get(position).getTitle());
         holder.book_desc.setText(books.get(position).getDescription());
 
-        Picasso.get().load(books.get(position).getLogoImagepathApi()).into(holder.book_image);
+        Picasso.get().load(books.get(position).getLogoImagepathApi()).resize(130,170).into(holder.book_image);
 
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override

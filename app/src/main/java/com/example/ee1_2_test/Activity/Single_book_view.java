@@ -62,7 +62,7 @@ public class Single_book_view extends AppCompatActivity {
             price.setText(stringdouble);
             isbn.setText(String.valueOf(isbn1));
             desc.setText(desc1);
-            Picasso.get().load(imagelocation1).into(mainImageview);
+            Picasso.get().load(imagelocation1).resize(500,700).into(mainImageview);
     }
 
     public void Logout(View view) {

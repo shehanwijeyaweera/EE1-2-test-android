@@ -99,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
                         moveToAdminDashboard();
                     }else if(role.equalsIgnoreCase("User")) {
                         moveToMainActivity();
+                    }else if(role.equalsIgnoreCase("Storeworker")) {
+                        moveToStoreworkerDashboard();
                     }
                 }
                 else if(loginRes.getResponse().equalsIgnoreCase("Wrong")){
@@ -142,6 +144,9 @@ public class MainActivity extends AppCompatActivity {
             else if(role.equalsIgnoreCase("User")){
                 moveToMainActivity();
             }
+            else if(role.equalsIgnoreCase("Storeworker")){
+                moveToStoreworkerDashboard();
+            }
         }
         else {
             //do nothing
@@ -150,6 +155,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void moveToAdminDashboard() {
         Intent myIntent = new Intent(MainActivity.this, AdminDashboard.class);
+        MainActivity.this.startActivity(myIntent);
+    }
+
+    private void moveToStoreworkerDashboard(){
+        Intent myIntent = new Intent(MainActivity.this, StoreworkerDashboard.class);
         MainActivity.this.startActivity(myIntent);
     }
 }

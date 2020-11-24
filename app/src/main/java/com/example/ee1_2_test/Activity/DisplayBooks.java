@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +35,8 @@ public class DisplayBooks extends AppCompatActivity {
 
     private RecyclerView books_recyclerview;
 
+    private ProgressBar loadingbookdata;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +44,11 @@ public class DisplayBooks extends AppCompatActivity {
 
         books_recyclerview=(RecyclerView)findViewById(R.id.books_recyclerview);
         books_recyclerview.setLayoutManager(new LinearLayoutManager(this));
+        loadingbookdata = findViewById(R.id.progressBar);
 
+        loadingbookdata.setVisibility(View.VISIBLE);
         getResponse();
-
+        loadingbookdata.setVisibility(View.INVISIBLE);
     }
 
     private void getResponse() {

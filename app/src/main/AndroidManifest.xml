@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EE12test">
         <activity android:name=".Activity.Userhomepage"
-            android:theme="@style/Theme.EE12test.NoActionbar"></activity>
+            android:theme="@style/Theme.EE12test.NoActionbar"
+            android:label="OnlineBookStore"></activity>
         <activity android:name=".Activity.userSingleBookView" />
         <activity android:name=".Activity.viewAllBooksUser" />
         <activity android:name=".Activity.StoreworkerDashboard" />

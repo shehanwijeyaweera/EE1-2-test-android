@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EE12test">
-        <activity android:name=".Activity.StoreworkerDashboard"></activity>
+        <activity android:name=".Activity.userSingleBookView"></activity>
+        <activity android:name=".Activity.viewAllBooksUser" />
+        <activity android:name=".Activity.StoreworkerDashboard" />
         <activity android:name=".Activity.AdminDashboard" />
         <activity android:name=".Activity.Single_book_view" />
         <activity android:name=".Activity.DisplayBooks" />

@@ -20,4 +20,6 @@ public interface BookstoreApi {
 
     @GET("login/{username}/{password}")
     Call<loginResponse2> getloginRespones(@Path("username")String username, @Path("password")String password);
+
+    
 }

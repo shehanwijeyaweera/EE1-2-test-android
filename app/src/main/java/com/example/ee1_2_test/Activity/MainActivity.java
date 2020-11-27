@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void moveToMainActivity() {
-        Intent myIntent = new Intent(MainActivity.this, DisplayBooks.class);
+        Intent myIntent = new Intent(MainActivity.this, viewAllBooksUser.class);
         MainActivity.this.startActivity(myIntent);
     }
 

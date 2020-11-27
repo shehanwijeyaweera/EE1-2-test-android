@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_view_all_books"
+            android:icon="@drawable/ic_books_icon"
+            android:title="Books" />
+        <item
+            android:id="@+id/nav_request_book"
+            android:icon="@drawable/ic_request_book"
+            android:title="Request Book" />
+        <item
+            android:id="@+id/nav_refund_request"
+            android:icon="@drawable/refund_respnse"
+            android:title="Refund Response" />
+        <item
+            android:id="@+id/nav_past_orders"
+            android:icon="@drawable/past_orders"
+            android:title="Past Orders" />
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_profile_icon"
+            android:title="Profile" />
+        <item
+            android:id="@+id/nav_about_us"
+            android:icon="@drawable/about_us_icon"
+            android:title="About Us" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/facebook"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/logout_icon"
+                android:title="Logout" />
+        </menu>
+    </item>
+</menu>

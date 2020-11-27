@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EE12test">
-        <activity android:name=".Activity.userSingleBookView"></activity>
+        <activity android:name=".Activity.Userhomepage"
+            android:theme="@style/Theme.EE12test.NoActionbar"></activity>
+        <activity android:name=".Activity.userSingleBookView" />
         <activity android:name=".Activity.viewAllBooksUser" />
         <activity android:name=".Activity.StoreworkerDashboard" />
         <activity android:name=".Activity.AdminDashboard" />
@@ -23,7 +25,8 @@
             android:name="com.google.android.actions"
             android:resource="@xml/network_security_config" />
 
-        <activity android:name=".Activity.MainActivity">
+        <activity android:name=".Activity.MainActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

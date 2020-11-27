@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void moveToMainActivity() {
-        Intent myIntent = new Intent(MainActivity.this, viewAllBooksUser.class);
+        Intent myIntent = new Intent(MainActivity.this, Userhomepage.class);
         MainActivity.this.startActivity(myIntent);
     }
 
@@ -142,6 +142,8 @@ public class MainActivity extends AppCompatActivity {
                 moveToAdminDashboard();
             }
             else if(role.equalsIgnoreCase("User")){
+                Intent myIntent = new Intent(MainActivity.this, Userhomepage.class);
+                MainActivity.this.startActivity(myIntent);
                 moveToMainActivity();
             }
             else if(role.equalsIgnoreCase("Storeworker")){

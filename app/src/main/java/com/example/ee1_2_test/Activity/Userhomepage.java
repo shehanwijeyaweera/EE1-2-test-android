@@ -16,6 +16,7 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.ee1_2_test.Fragments.AboutUsFragmentUser;
+import com.example.ee1_2_test.Fragments.AddToCartFragmentUser;
 import com.example.ee1_2_test.Fragments.BooksFragmentUser;
 import com.example.ee1_2_test.Fragments.PastOrdersFragmentUser;
 import com.example.ee1_2_test.Fragments.ProfileInfoFragmentUser;
@@ -96,6 +97,9 @@ public class Userhomepage extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_request_book:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer,new RequestBookFragmentUser()).commit();
+                break;
+            case R.id.nav_add_to_cart:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer,new AddToCartFragmentUser()).commit();
                 break;
             case R.id.nav_share:
                 Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();

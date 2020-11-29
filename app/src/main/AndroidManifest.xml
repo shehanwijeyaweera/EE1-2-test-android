@@ -17,8 +17,8 @@
             android:label="OnlineBookStore"></activity>
         <activity android:name=".Activity.userSingleBookView" />
         <activity android:name=".Activity.viewAllBooksUser" />
-        <activity android:name=".Activity.StoreworkerDashboard" />
-        <activity android:name=".Activity.AdminDashboard" />
+        <activity android:name=".Activity.StoreworkerDashboard" android:theme="@style/Theme.EE12test.NoActionbar" />
+        <activity android:name=".Activity.AdminDashboard" android:theme="@style/Theme.EE12test.NoActionbar" />
         <activity android:name=".Activity.Single_book_view" />
         <activity android:name=".Activity.DisplayBooks" />
 

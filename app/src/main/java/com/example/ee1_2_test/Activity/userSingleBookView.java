@@ -40,15 +40,15 @@ public class userSingleBookView extends AppCompatActivity {
         double price = intent.getExtras().getDouble("price");
         String author = intent.getExtras().getString("author");
 
-        String stringdouble = Double.toString(price);
+        String stringdouble = "Price: Rs." + Double.toString(price) +"0";
 
         tvTitle.setText(Title);
         tvDescription.setText(Description);
         tvCategory.setText(category);
-        tvpubdate.setText(pubdate);
-        tvpublisher.setText(publisher);
+        tvpubdate.setText("Published date: "+pubdate);
+        tvpublisher.setText("Publisher: "+publisher);
         tvprice.setText(stringdouble);
-        tvauthor.setText(author);
+        tvauthor.setText("Author: "+author);
         Picasso.get().load(imagepath).into(bookImage);
     }
 }

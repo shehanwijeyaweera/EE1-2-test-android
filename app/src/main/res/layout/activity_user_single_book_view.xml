@@ -43,6 +43,53 @@
                 android:padding="8dp"
                 android:layout_marginTop="10dp"/>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Publisher"
+                    android:id="@+id/publisher_user_view_single_book"
+                    android:layout_alignParentLeft="true"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pubdate_user_view_single_book"
+                    android:layout_toRightOf="@+id/publisher_user_view_single_book"
+                    android:layout_alignParentRight="true"
+                    android:gravity="right"
+                    android:text="Published Date" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:id="@+id/price_user_view_single_book"
+                    android:layout_alignParentLeft="true"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/author_user_view_single_book"
+                    android:layout_toRightOf="@+id/price_user_view_single_book"
+                    android:layout_alignParentRight="true"
+                    android:gravity="right"
+                    android:text="Author" />
+            </RelativeLayout>
+
             <TextView
                 android:id="@+id/book_desc_user_view_single_book"
                 android:textSize="18sp"
@@ -50,8 +97,21 @@
                 android:text="Description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/add_to_cart"
+                android:text="Add To Cart"
+                android:layout_margin="8dp"
+                android:layout_gravity="bottom"
+                android:background="#ff751a"
+                android:layout_alignParentBottom="true"/>
+
         </LinearLayout>
 
+
     </androidx.core.widget.NestedScrollView>
+
 
 </LinearLayout>

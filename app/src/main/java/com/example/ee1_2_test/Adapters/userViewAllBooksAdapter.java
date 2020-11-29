@@ -54,15 +54,26 @@ public class userViewAllBooksAdapter extends RecyclerView.Adapter<userViewAllBoo
                 intent.putExtra("pubdate", books.get(position).getPubdate());
                 intent.putExtra("publisher", books.get(position).getPublisher());
                 intent.putExtra("price", books.get(position).getPrice());
-                if(books.get(position).getAuthors().equals(true)) {
-                    intent.putExtra("author", "Not available");
-                }else {
+//                if(books.get(position).getAuthors().equals(true)) {
+//                    intent.putExtra("author", "Not available");
+//                }else {
+//                    intent.putExtra("author", books.get(position).getAuthors().get(0).getAuthorName());
+//                }
+//                if (books.get(position).getCategories().equals(true)) {
+//                    intent.putExtra("category", "Not available");
+//                } else {
+//                    intent.putExtra("category", books.get(position).getCategories().get(0).getCategoryName());
+//                }
+                try {
                     intent.putExtra("author", books.get(position).getAuthors().get(0).getAuthorName());
+                }catch (Exception e){
+                    intent.putExtra("author", "Not available");
                 }
-                if (books.get(position).getCategories().equals(true)) {
-                    intent.putExtra("category", "Not available");
-                } else {
+
+                try {
                     intent.putExtra("category", books.get(position).getCategories().get(0).getCategoryName());
+                }catch (Exception e){
+                    intent.putExtra("category", "Not available");
                 }
                 context.startActivity(intent);
             }

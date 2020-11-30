@@ -1,5 +1,6 @@
 package com.example.ee1_2_test.API;
 
+import com.example.ee1_2_test.Model.AdminDashboard;
 import com.example.ee1_2_test.Model.Book;
 import com.example.ee1_2_test.Model.loginResponse;
 import com.example.ee1_2_test.Model.loginResponse2;
@@ -21,5 +22,6 @@ public interface BookstoreApi {
     @GET("login/{username}/{password}")
     Call<loginResponse2> getloginRespones(@Path("username")String username, @Path("password")String password);
 
-    
+    @GET("admindashboard")
+    Call<AdminDashboard> getDashboardstats();
 }

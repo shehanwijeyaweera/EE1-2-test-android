@@ -59,6 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Amount"
+                    android:id="@+id/admin_dashboard_orders"
                     android:textColor="	#008000"
                     android:textStyle="bold"
                     android:textAlignment="center"
@@ -101,6 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Amount"
+                    android:id="@+id/admin_dashboard_sales"
                     android:textColor="	#008000"
                     android:textStyle="bold"
                     android:textAlignment="center"
@@ -143,6 +145,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Amount"
+                    android:id="@+id/admin_dashboard_totalbooks"
                     android:textColor="	#008000"
                     android:textStyle="bold"
                     android:textAlignment="center"
@@ -185,6 +188,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Amount"
+                    android:id="@+id/admin_dashboard_clients"
                     android:textColor="	#008000"
                     android:textStyle="bold"
                     android:textAlignment="center"
@@ -192,47 +196,6 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_row="1"
-            android:layout_column="1"
-            android:layout_gravity="fill"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_gravity="center_vertical|center_horizontal">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/clients_icon_dashboard"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Clients"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
-                    android:gravity="center_horizontal" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Amount"
-                    android:textColor="	#008000"
-                    android:textStyle="bold"
-                    android:textAlignment="center"
-                    android:gravity="center_horizontal" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
@@ -269,6 +232,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Amount"
+                    android:id="@+id/admin_dashboard_bookrequests"
                     android:textColor="	#008000"
                     android:textStyle="bold"
                     android:textAlignment="center"
@@ -311,6 +275,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Amount"
+                    android:id="@+id/admin_dashboard_refund"
                     android:textColor="	#008000"
                     android:textStyle="bold"
                     android:textAlignment="center"

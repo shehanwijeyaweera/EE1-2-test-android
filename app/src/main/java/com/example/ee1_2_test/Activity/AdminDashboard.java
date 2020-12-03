@@ -26,10 +26,12 @@ import com.example.ee1_2_test.Fragments.DashboardFragmentAdmin;
 import com.example.ee1_2_test.Fragments.DashboardFragmentStoreworker;
 import com.example.ee1_2_test.Fragments.OrdersFragmentAdmin;
 import com.example.ee1_2_test.Fragments.PastOrdersFragmentUser;
+import com.example.ee1_2_test.Fragments.PendingOrdersFragmentAdmin;
 import com.example.ee1_2_test.Fragments.ProfileInfoFragmentUser;
 import com.example.ee1_2_test.Fragments.RefundFragmentAdmin;
 import com.example.ee1_2_test.Fragments.RefundResponseFragmentUser;
 import com.example.ee1_2_test.Fragments.RequestBookFragmentUser;
+import com.example.ee1_2_test.Fragments.ShippedOrdersFragmentAdmin;
 import com.example.ee1_2_test.Fragments.UserFragmentAdmin;
 import com.example.ee1_2_test.Model.Role;
 import com.example.ee1_2_test.Model.User;
@@ -76,25 +78,31 @@ public class AdminDashboard extends AppCompatActivity implements NavigationView.
             case R.id.nav_admin_dashboard:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer_admin,new DashboardFragmentAdmin()).commit();
                 break;
-            case R.id.nav_admin_book:
+            case R.id.nav_admin_viewallbook:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer_admin,new BookFragmentAdmin()).commit();
                 break;
-            case R.id.nav_admin_category:
+            case R.id.nav_admin_viewallcategory:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer_admin,new CategoryFragmentAdmin()).commit();
                 break;
-            case R.id.nav_admin_author:
+            case R.id.nav_admin_viewallauthor:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer_admin,new AuthorFragmentAdmin()).commit();
                 break;
             case R.id.nav_admin_orders:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer_admin,new OrdersFragmentAdmin()).commit();
                 break;
-            case R.id.nav_admin_refunds:
+            case R.id.nav_admin_pendingorders:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer_admin,new PendingOrdersFragmentAdmin()).commit();
+                break;
+            case R.id.nav_admin_shippedorders:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer_admin,new ShippedOrdersFragmentAdmin()).commit();
+                break;
+            case R.id.nav_admin_viewallrefunds:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer_admin,new RefundFragmentAdmin()).commit();
                 break;
             case R.id.nav_admin_bookrequest:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer_admin,new BookRequestFragmentAdmin()).commit();
                 break;
-            case R.id.nav_admin_users:
+            case R.id.nav_admin_viewallusers:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer_admin,new UserFragmentAdmin()).commit();
                 break;
             case R.id.nav_admin_logout:

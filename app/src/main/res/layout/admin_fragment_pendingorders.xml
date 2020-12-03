@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/orders_recyclerview_admin"
+        android:id="@+id/pendingorders_recyclerview_admin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
@@ -9,41 +9,97 @@
             android:id="@+id/nav_admin_dashboard"
             android:icon="@drawable/dashboard_icon"
             android:title="Dashboard" />
-        <item
-            android:id="@+id/nav_admin_book"
-            android:icon="@drawable/ic_books_icon"
-            android:title="Book" />
-        <item android:id="@+id/nav_admin_category"
-            android:icon="@drawable/category_icon"
-            android:title="Category" />
-        <item
-            android:id="@+id/nav_admin_author"
-            android:icon="@drawable/author_icon"
-            android:title="Author" />
-        <item
-            android:id="@+id/nav_admin_orders"
-            android:icon="@drawable/past_orders"
-            android:title="Orders" />
-        <item
-            android:id="@+id/nav_admin_refunds"
-            android:icon="@drawable/refund_respnse"
-            android:title="Refunds" />
-        <item
-            android:id="@+id/nav_admin_bookrequest"
-            android:icon="@drawable/ic_request_book"
-            android:title="Book Requests" />
-        <item
-            android:id="@+id/nav_admin_users"
-            android:icon="@drawable/ic_profile_icon"
-            android:title="Users" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Book">
         <menu>
             <item
-                android:id="@+id/nav_admin_logout"
-                android:icon="@drawable/logout_icon"
-                android:title="Logout" />
+                android:id="@+id/nav_admin_addbook"
+                android:icon="@drawable/ic_books_icon"
+                android:title="Add Book" />
+            <item
+                android:id="@+id/nav_admin_viewallbook"
+                android:title="View All Books" />
         </menu>
     </item>
+
+    <item android:title="Category">
+        <menu>
+            <item
+                android:id="@+id/nav_admin_addcategory"
+                android:icon="@drawable/category_icon"
+                android:title="Add Category" />
+            <item
+                android:id="@+id/nav_admin_viewallcategory"
+                android:title="View All Category" />
+        </menu>
+    </item>
+
+    <item android:title="Author">
+        <menu>
+            <item
+                android:id="@+id/nav_admin_addauthor"
+                android:icon="@drawable/author_icon"
+                android:title="Add Author" />
+            <item
+                android:id="@+id/nav_admin_viewallauthor"
+                android:title="View All Author" />
+        </menu>
+    </item>
+
+    <item android:title="Orders">
+        <menu>
+            <item
+                android:id="@+id/nav_admin_orders"
+                android:icon="@drawable/past_orders"
+                android:title="View All Orders" />
+            <item
+                android:id="@+id/nav_admin_pendingorders"
+                android:title="Pending Orders" />
+            <item
+                android:id="@+id/nav_admin_shippedorders"
+                android:title="Shipped Orders" />
+        </menu>
+    </item>
+
+    <item android:title="Refund">
+        <menu>
+            <item
+                android:id="@+id/nav_admin_viewallrefunds"
+                android:icon="@drawable/refund_respnse"
+                android:title="View All Refund Requests" />
+            <item
+                android:id="@+id/nav_admin_refundedrefunds"
+                android:title="Refunded Refunds" />
+            <item
+                android:id="@+id/nav_admin_rejectedrefunds"
+                android:title="Rejected Refunds" />
+        </menu>
+    </item>
+
+    <item android:title="Requests">
+        <menu>
+            <item
+                android:id="@+id/nav_admin_bookrequest"
+                android:icon="@drawable/ic_request_book"
+                android:title="Book Requests" />
+        </menu>
+    </item>
+
+    <item android:title="Users">
+        <menu>
+            <item
+                android:id="@+id/nav_admin_viewallusers"
+                android:icon="@drawable/ic_profile_icon"
+                android:title="View all Users" />
+            <item
+                android:id="@+id/nav_admin_addusers"
+                android:title="Add Users" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/nav_admin_logout"
+        android:icon="@drawable/logout_icon"
+        android:title="Logout" />
 </menu>

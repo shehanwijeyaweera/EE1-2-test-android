@@ -25,9 +25,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class OrdersFragmentAdmin extends Fragment {
+public class ShippedOrdersFragmentAdmin extends Fragment {
 
-    private RecyclerView orders_recyclerview_admin;
+    private RecyclerView Shippedorders_recyclerview_admin;
     private BookstoreApi bookstoreApi;
     private OrdersAdapter ordersAdapter;
     ArrayList<Customer_orders> customer_orders = new ArrayList<>();
@@ -37,10 +37,10 @@ public class OrdersFragmentAdmin extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
 
-        View view = inflater.inflate(R.layout.admin_fragment_orders,container,false);
+        View view = inflater.inflate(R.layout.admin_fragment_shippedorders,container,false);
 
-        orders_recyclerview_admin = view.findViewById(R.id.orders_recyclerview_admin);
-        orders_recyclerview_admin.setLayoutManager(new LinearLayoutManager(getContext()));
+        Shippedorders_recyclerview_admin = view.findViewById(R.id.shippedorders_recyclerview_admin);
+        Shippedorders_recyclerview_admin.setLayoutManager(new LinearLayoutManager(getContext()));
 
         getResponse();
 
@@ -51,14 +51,14 @@ public class OrdersFragmentAdmin extends Fragment {
 
         bookstoreApi = ApiClient.getClient().create(BookstoreApi.class);
 
-        Call<List<Customer_orders>> call = bookstoreApi.getAllOrders();
+        Call<List<Customer_orders>> call = bookstoreApi.getAllShippedOrders();
 
         call.enqueue(new Callback<List<Customer_orders>>() {
             @Override
             public void onResponse(Call<List<Customer_orders>> call, Response<List<Customer_orders>> response) {
                 customer_orders = new ArrayList<>(response.body());
                 ordersAdapter = new OrdersAdapter(getContext(),customer_orders);
-                orders_recyclerview_admin.setAdapter(ordersAdapter);
+                Shippedorders_recyclerview_admin.setAdapter(ordersAdapter);
             }
 
             @Override

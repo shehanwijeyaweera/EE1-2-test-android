@@ -2,6 +2,7 @@ package com.example.ee1_2_test.API;
 
 import com.example.ee1_2_test.Model.AdminDashboard;
 import com.example.ee1_2_test.Model.Book;
+import com.example.ee1_2_test.Model.Customer_orders;
 import com.example.ee1_2_test.Model.loginResponse;
 import com.example.ee1_2_test.Model.loginResponse2;
 
@@ -24,4 +25,13 @@ public interface BookstoreApi {
 
     @GET("admindashboard")
     Call<AdminDashboard> getDashboardstats();
+
+    @GET("custorders")
+    Call<List<Customer_orders>> getAllOrders();
+
+    @GET("custpendingorders")
+    Call<List<Customer_orders>> getAllPendingOrders();
+
+    @GET("custshippedorders")
+    Call<List<Customer_orders>> getAllShippedOrders();
 }

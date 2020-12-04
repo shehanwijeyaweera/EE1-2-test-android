@@ -1,6 +1,9 @@
 package com.example.ee1_2_test.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +15,18 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ee1_2_test.Activity.orderItems_admin;
+import com.example.ee1_2_test.Model.CustomerOrderItem;
 import com.example.ee1_2_test.Model.Customer_orders;
 import com.example.ee1_2_test.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder> {
 
     private ArrayList<Customer_orders> customer_orders = new ArrayList<>();
+    private ArrayList<CustomerOrderItem> customerOrderItems = new ArrayList<>();
     private Context context;
 
     public OrdersAdapter(Context context, ArrayList<Customer_orders> customer_orders){
@@ -44,10 +51,15 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder
             holder.tvFirstName.setText(customer_orders.get(position).getUser().getUserFName());
             holder.tvLastName.setText(customer_orders.get(position).getUser().getUserLName());
 
+
             holder.viewOrderbtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(context, "Button Clicked "+stringInteger, Toast.LENGTH_SHORT).show();
+                    customerOrderItems = new ArrayList<>(customer_orders.get(position).getCustomerOrderItems());
+                    String testDebugpoint = "Test";
+                    Intent intent = new Intent(context, orderItems_admin.class);
+                    intent.putExtra("custorderitems", customerOrderItems);
+                    context.startActivity(intent);
                 }
             });
     }

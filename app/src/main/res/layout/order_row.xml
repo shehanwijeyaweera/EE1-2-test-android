@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:id="@+id/orders_mainLayout">
+    android:id="@+id/orders_mainLayout"
+    android:paddingBottom="15dp">
 
 
     <TextView

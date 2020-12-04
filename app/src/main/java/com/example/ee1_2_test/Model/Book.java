@@ -3,10 +3,11 @@ package com.example.ee1_2_test.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 
-public class Book {
+public class Book implements Serializable {
 
     @SerializedName("bookId")
     @Expose

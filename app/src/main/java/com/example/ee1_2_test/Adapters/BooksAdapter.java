@@ -25,6 +25,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
 
     private ArrayList<Book> books = new ArrayList<>();
     private Context context;
+    private Book bookdetails;
 
     public BooksAdapter(Context context, ArrayList<Book> books){
             this.books = books;
@@ -54,6 +55,9 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
                 intent.putExtra("isbn", books.get(position).getIsbn());
                 intent.putExtra("desc", books.get(position).getDescription());
                 intent.putExtra("imageLocation", books.get(position).getLogoImagepathApi());
+                bookdetails = books.get(position);
+                String testDebug = "Test";
+                intent.putExtra("bookdetails", bookdetails);
                 context.startActivity(intent);
             }
         });

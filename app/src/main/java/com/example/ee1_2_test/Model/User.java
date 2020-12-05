@@ -3,7 +3,9 @@ package com.example.ee1_2_test.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     @SerializedName("id")
     @Expose
     private Integer id;

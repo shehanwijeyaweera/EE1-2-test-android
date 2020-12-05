@@ -1,11 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/cartItem_recyclerview_user"
+        android:layout_above="@+id/cartItem_totalprice_user"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="cart"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
+        android:id="@+id/cartItem_totalprice_user"
+        android:orientation="vertical"
+        android:layout_margin="8dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/teal_700">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="8"
+                android:padding="8dp"
+                android:background="@color/teal_200">
+
+                <TextView
+                    android:text="Total Cost"
+                    android:textSize="30sp"
+                    android:layout_weight="4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:id="@+id/cart_finalprice_user"
+                    android:text="0"
+                    android:textSize="30sp"
+                    android:gravity="right" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/purchaseOrder_cartitem_user"
+            android:text="ORDER"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"/>
+
+    </LinearLayout>
+
 </RelativeLayout>

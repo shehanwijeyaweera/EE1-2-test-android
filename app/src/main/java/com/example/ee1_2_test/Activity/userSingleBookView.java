@@ -4,16 +4,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.ee1_2_test.Dialog.AddToCartDialog;
+import com.example.ee1_2_test.Model.Book;
 import com.example.ee1_2_test.R;
+import com.example.ee1_2_test.Sessions.SessionManagement;
 import com.squareup.picasso.Picasso;
 
-public class userSingleBookView extends AppCompatActivity {
+public class userSingleBookView extends AppCompatActivity implements AddToCartDialog.AddToCartListener {
 
     private TextView tvTitle, tvDescription, tvCategory, tvpublisher, tvpubdate, tvprice, tvauthor;
     private ImageView bookImage;
+    private Button addToCart;
+    private Book bookDetails;
+    int quantityValue;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +37,7 @@ public class userSingleBookView extends AppCompatActivity {
         tvpublisher = findViewById(R.id.publisher_user_view_single_book);
         tvprice = findViewById(R.id.price_user_view_single_book);
         tvauthor = findViewById(R.id.author_user_view_single_book);
+        addToCart = findViewById(R.id.add_to_cart);
 
 
         Intent intent = getIntent();
@@ -50,5 +60,27 @@ public class userSingleBookView extends AppCompatActivity {
         tvprice.setText(stringdouble);
         tvauthor.setText("Author: "+author);
         Picasso.get().load(imagepath).into(bookImage);
+
+
+        addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialog();
+            }
+        });
+
+    }
+
+    private void openDialog() {
+        AddToCartDialog addToCartDialog = new AddToCartDialog();
+        addToCartDialog.show(getSupportFragmentManager(), "Quantity");
+    }
+
+    @Override
+    public void applyQuantity(String quantity) {
+        SessionManagement sessionManagement = new SessionManagement(userSingleBookView.this);
+        quantityValue  = Integer.parseInt(quantity);
+        bookDetails = (Book) getIntent().getSerializableExtra("bookdetails");
+        sessionManagement.addToCart(bookDetails,quantityValue);
     }
 }

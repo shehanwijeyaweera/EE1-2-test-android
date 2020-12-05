@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/cartItem_mainLayout"
+    android:padding="15dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/bookimage_cartitem_user"
+            android:layout_width="100dp"
+            android:layout_height="140dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp" />
+
+        <TextView
+            android:id="@+id/booktitle_cartitem_user"
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="21dp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginTop="18dp"
+            android:layout_toEndOf="@+id/bookimage_cartitem_user"
+            android:layout_toRightOf="@+id/bookimage_cartitem_user"
+            android:text="Book Title" />
+
+        <TextView
+            android:id="@+id/quantity_cartitem_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/booktitle_cartitem_user"
+            android:layout_alignStart="@+id/booktitle_cartitem_user"
+            android:layout_alignLeft="@+id/booktitle_cartitem_user"
+            android:layout_marginStart="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="21dp"
+            android:text="Quantity" />
+
+        <TextView
+            android:id="@+id/Subtotal_cartitem_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/quantity_cartitem_user"
+            android:layout_marginStart="22dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="15dp"
+            android:layout_toEndOf="@+id/bookimage_cartitem_user"
+            android:layout_toRightOf="@+id/bookimage_cartitem_user"
+            android:text="Sub Total" />
+
+        <Button
+            android:id="@+id/Removeitem_cartitem_user"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="93dp"
+            android:layout_marginLeft="93dp"
+            android:layout_marginTop="33dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toEndOf="@+id/quantity_cartitem_user"
+            android:layout_toRightOf="@+id/quantity_cartitem_user"
+            android:text="X" />
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

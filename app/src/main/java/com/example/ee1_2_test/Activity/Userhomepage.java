@@ -102,13 +102,15 @@ public class Userhomepage extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer,new AddToCartFragmentUser()).commit();
                 break;
             case R.id.nav_share:
-                Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
+                SessionManagement sessionManagement = new SessionManagement(Userhomepage.this);
+                sessionManagement.clearCart();
+                Toast.makeText(this, "Cart Cleared", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_logout:
                 Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
 
-                SessionManagement sessionManagement = new SessionManagement(Userhomepage.this);
-                sessionManagement.removeSession();
+                SessionManagement sessionManagement1 = new SessionManagement(Userhomepage.this);
+                sessionManagement1.removeSession();
                 Intent intent = new Intent(Userhomepage.this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);

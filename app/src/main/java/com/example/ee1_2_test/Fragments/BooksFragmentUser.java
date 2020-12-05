@@ -43,6 +43,8 @@ public class BooksFragmentUser extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
+        getActivity().setTitle("Books");
+
         View view = inflater.inflate(R.layout.fragment_view_all_books,container,false);
 
         books_recyclerview_user = view.findViewById(R.id.books_recyclerview_user);

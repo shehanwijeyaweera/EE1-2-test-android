@@ -23,6 +23,7 @@ public class userViewAllBooksAdapter extends RecyclerView.Adapter<userViewAllBoo
 
     private ArrayList<Book> books = new ArrayList<>();
     private Context context;
+    private Book bookdetails;
 
     public userViewAllBooksAdapter(Context context, ArrayList<Book> books) {
         this.books = books;
@@ -65,6 +66,9 @@ public class userViewAllBooksAdapter extends RecyclerView.Adapter<userViewAllBoo
                 }catch (Exception e){
                     intent.putExtra("category", "Not available");
                 }
+                bookdetails = books.get(position);
+                String testDebug = "Test";
+                intent.putExtra("bookdetails", bookdetails);
                 context.startActivity(intent);
             }
         });

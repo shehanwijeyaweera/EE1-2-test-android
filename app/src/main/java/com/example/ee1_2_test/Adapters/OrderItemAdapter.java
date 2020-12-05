@@ -38,9 +38,10 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.orderitemId.setText(Integer.toString(customerOrderItems.get(position).getId()));
-        holder.orderitemQuantity.setText(Double.toString(customerOrderItems.get(position).getQuantity()));
-        Picasso.get().load(customerOrderItems.get(position).getBook().getLogoImagepathApi()).resize(300,500).into(holder.orderItembookImage);
+        holder.orderitemId.setText("Order Item ID: "+Integer.toString(customerOrderItems.get(position).getId()));
+        holder.orderitemQuantity.setText("Quantity: "+Integer.toString(customerOrderItems.get(position).getQuantity()));
+        holder.booknameOrderitem.setText(customerOrderItems.get(position).getBook().getTitle());
+        Picasso.get().load(customerOrderItems.get(position).getBook().getLogoImagepathApi()).resize(300,400).into(holder.orderItembookImage);
     }
 
     @Override
@@ -49,7 +50,7 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView orderitemId, orderitemQuantity;
+        TextView orderitemId, orderitemQuantity, booknameOrderitem;
         ImageView orderItembookImage;
         ConstraintLayout orderItemMainLayout;
         public ViewHolder(@NonNull View itemView) {
@@ -59,6 +60,7 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.View
             orderitemQuantity = itemView.findViewById(R.id.Quantity_orderitem_admin);
             orderItembookImage = itemView.findViewById(R.id.orderItem_bookImage_admin);
             orderItemMainLayout = itemView.findViewById(R.id.orderItem_mainLayout);
+            booknameOrderitem = itemView.findViewById(R.id.orderitem_bookname_admin);
         }
     }
 }

@@ -37,13 +37,17 @@ public class AddToCartFragmentUser extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_add_to_cart,container,false);
 
-        cartitem_recyclerview_user = view.findViewById(R.id.cartItem_recyclerview_user);
-        cartitem_recyclerview_user.setLayoutManager(new LinearLayoutManager(getContext()));
-        totalprice = view.findViewById(R.id.cart_finalprice_user);
+        setRecyclerView(view);
 
         setData();
 
         return view;
+    }
+
+    private void setRecyclerView(View view) {
+        cartitem_recyclerview_user = view.findViewById(R.id.cartItem_recyclerview_user);
+        cartitem_recyclerview_user.setLayoutManager(new LinearLayoutManager(getContext()));
+        totalprice = view.findViewById(R.id.cart_finalprice_user);
     }
 
     private void setData() {
@@ -59,10 +63,39 @@ public class AddToCartFragmentUser extends Fragment {
 
             totalprice.setText(Double.toString(s));
 
-            String test = "test";
-
             cartItemAdapter = new CartItemAdapter(cartItems, getContext());
             cartitem_recyclerview_user.setAdapter(cartItemAdapter);
+
+            cartItemAdapter.setOnItemClickListener(new CartItemAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(int position) {
+                    SessionManagement sessionManagement = new SessionManagement(getContext());
+                    sessionManagement.removeCartItem(cartItems.get(position).getBook().getBookId());
+                    removeItem(position);
+                }
+            });
+        }
+    }
+
+    public void removeItem(int position){
+        cartItems.remove(position);
+        cartItemAdapter.notifyItemRemoved(position);
+        onResume();
+    }
+
+    private void updateTotal() {
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        double s = 0;
+        if(cartItems != null){
+            for (CartItem cartItem : cartItems) {
+                s += cartItem.getQuantity() * cartItem.getBook().getPrice().doubleValue();
+            }
+            totalprice.setText(Double.toString(s));
         }
     }
 }

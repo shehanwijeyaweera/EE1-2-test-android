@@ -29,6 +29,15 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
     private ArrayList<CartItem> cartItems = new ArrayList<>();
     private Context context;
     private CartItemAdapter cartItemAdapter;
+    private OnItemClickListener mListener;
+
+    public interface OnItemClickListener{
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        mListener = listener;
+    }
 
     public CartItemAdapter(ArrayList<CartItem> cartItems, Context context) {
         this.cartItems = cartItems;
@@ -41,7 +50,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
         View view;
         LayoutInflater inflater = LayoutInflater.from(context);
         view = inflater.inflate(R.layout.cartitem_row,parent,false);
-        return new ViewHolder(view);
+        return new ViewHolder(view, mListener);
     }
 
     @Override
@@ -52,14 +61,14 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
             holder.subtotal.setText("SubTotal: Rs."+Double.toString(subtotal)+"0");
             Picasso.get().load(cartItems.get(position).getBook().getLogoImagepathApi()).resize(300, 400).into(holder.bookImage);
 
-            holder.removeItem.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    SessionManagement sessionManagement = new SessionManagement(context);
-                    sessionManagement.removeCartItem(cartItems.get(position).getBook().getBookId());
-                    Toast.makeText(context, "Item Removed: "+cartItems.get(position).getBook().getTitle(), Toast.LENGTH_SHORT).show();
-                }
-            });
+//            holder.removeItem.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    SessionManagement sessionManagement = new SessionManagement(context);
+//                    sessionManagement.removeCartItem(cartItems.get(position).getBook().getBookId());
+//                    Toast.makeText(context, "Item Removed: "+cartItems.get(position).getBook().getTitle(), Toast.LENGTH_SHORT).show();
+//                }
+//            });
     }
 
     @Override
@@ -72,7 +81,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
         private TextView booktitle, quantity, subtotal;
         private Button removeItem;
         private ConstraintLayout cartitemLayout;
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
 
             bookImage = itemView.findViewById(R.id.bookimage_cartitem_user);
@@ -81,6 +90,18 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
             subtotal = itemView.findViewById(R.id.Subtotal_cartitem_user);
             cartitemLayout = itemView.findViewById(R.id.cartItem_mainLayout);
             removeItem = itemView.findViewById(R.id.Removeitem_cartitem_user);
+
+            removeItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener != null){
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }

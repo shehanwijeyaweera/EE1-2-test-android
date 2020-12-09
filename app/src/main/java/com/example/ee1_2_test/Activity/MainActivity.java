@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ee1_2_test.API.BookstoreApi;
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
     private CardView loginbtn;
 
+    private TextView register;
+
     private BookstoreApi bookstoreApi;
 
     @Override
@@ -51,7 +54,15 @@ public class MainActivity extends AppCompatActivity {
         username = findViewById(R.id.usernameet);
         password = findViewById(R.id.passwordet);
         loginbtn = findViewById(R.id.cardView);
+        register = findViewById(R.id.textView2);
 
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(MainActivity.this, UserRegister.class);
+                MainActivity.this.startActivity(myIntent);
+            }
+        });
 
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override

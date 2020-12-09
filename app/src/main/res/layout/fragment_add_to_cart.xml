@@ -34,7 +34,7 @@
 
                 <TextView
                     android:text="Total Cost"
-                    android:textSize="30sp"
+                    android:textSize="15sp"
                     android:layout_weight="4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
@@ -45,7 +45,7 @@
                     android:layout_weight="4"
                     android:id="@+id/cart_finalprice_user"
                     android:text="0"
-                    android:textSize="30sp"
+                    android:textSize="20sp"
                     android:gravity="right" />
             </LinearLayout>
 
@@ -57,7 +57,7 @@
             android:id="@+id/purchaseOrder_cartitem_user"
             android:text="ORDER"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="8dp" />
 
     </LinearLayout>
 

@@ -37,6 +37,21 @@ public class User implements Serializable {
     @Expose
     private Object verificationCode;
 
+    public User(String username, String password, String userFName, String userLName, String userEmail, Integer userPhoneNo, String userAddress, Boolean enabled, Object verificationCode) {
+        this.username = username;
+        this.password = password;
+        this.userFName = userFName;
+        this.userLName = userLName;
+        this.userEmail = userEmail;
+        this.userPhoneNo = userPhoneNo;
+        this.userAddress = userAddress;
+        this.enabled = enabled;
+        this.verificationCode = verificationCode;
+    }
+
+    public User() {
+    }
+
     public Integer getId() {
         return id;
     }

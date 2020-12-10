@@ -22,12 +22,14 @@ import java.util.ArrayList;
 public class userViewAllBooksAdapter extends RecyclerView.Adapter<userViewAllBooksAdapter.ViewHolder> {
 
     private ArrayList<Book> books = new ArrayList<>();
+    private ArrayList<Book> filteredBooks = new ArrayList<>();
     private Context context;
     private Book bookdetails;
 
     public userViewAllBooksAdapter(Context context, ArrayList<Book> books) {
         this.books = books;
         this.context = context;
+
     }
 
     @NonNull
@@ -92,5 +94,10 @@ public class userViewAllBooksAdapter extends RecyclerView.Adapter<userViewAllBoo
             Image_book_thumbnail = (ImageView) itemView.findViewById(R.id.image_view_user_view_all);
             cardView = (CardView) itemView.findViewById(R.id.cardView_id);
         }
+    }
+
+    public void filterList(ArrayList<Book> filteredBooks){
+        books = filteredBooks;
+        notifyDataSetChanged();
     }
 }

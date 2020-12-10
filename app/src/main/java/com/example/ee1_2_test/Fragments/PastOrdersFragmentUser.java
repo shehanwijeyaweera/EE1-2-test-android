@@ -39,6 +39,9 @@ public class PastOrdersFragmentUser extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        getActivity().setTitle("Past Orders");
+
         View view = inflater.inflate(R.layout.fragment_past_orders,container,false);
 
         pastOrders_recyclerview_user = view.findViewById(R.id.pastorders_recyclerview_user);

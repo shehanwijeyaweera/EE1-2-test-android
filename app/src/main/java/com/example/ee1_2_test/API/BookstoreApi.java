@@ -45,4 +45,7 @@ public interface BookstoreApi {
 
     @POST("checkout/{username}/{total}")
     Call<loginResponse> checkoutCart(@Path("username") String username, @Path("total") double total, @Body List<CartItem> cartItems);
+
+    @GET("search/{keyword}")
+    Call<List<Book>> getSearchResults(@Path("keyword")String keyword);
 }

@@ -82,4 +82,5 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
             mainLayout= (ConstraintLayout) itemView.findViewById(R.id.mainLayout);
         }
     }
+
 }

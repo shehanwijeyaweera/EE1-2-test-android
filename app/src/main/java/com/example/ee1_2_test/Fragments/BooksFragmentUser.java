@@ -81,6 +81,7 @@ public class BooksFragmentUser extends Fragment {
             }
         });
 
+
         return view;
     }
 
@@ -133,15 +134,19 @@ public class BooksFragmentUser extends Fragment {
     }
 
     private void filter(String toString) {
-        ArrayList<Book> filteredList = new ArrayList<>();
+        if(toString!=null) {
+            ArrayList<Book> filteredList = new ArrayList<>();
 
-        for(Book book: books){
-            if(book.getTitle().toLowerCase().contains(toString.toLowerCase())){
-                filteredList.add(book);
+            for (Book book : books) {
+                if (book.getTitle().toLowerCase().contains(toString.toLowerCase())) {
+                    filteredList.add(book);
+                }
             }
-        }
 
-        ViewAllBooksAdapter.filterList(filteredList);
+            ViewAllBooksAdapter.filterList(filteredList);
+        } else {
+            ViewAllBooksAdapter.filterList(books);
+        }
     }
 
 }

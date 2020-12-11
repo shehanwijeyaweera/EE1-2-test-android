@@ -5,6 +5,8 @@ import com.example.ee1_2_test.Model.AdminDashboard;
 import com.example.ee1_2_test.Model.Book;
 import com.example.ee1_2_test.Model.CartItem;
 import com.example.ee1_2_test.Model.Customer_orders;
+import com.example.ee1_2_test.Model.RegisterResponse;
+import com.example.ee1_2_test.Model.User;
 import com.example.ee1_2_test.Model.loginResponse;
 import com.example.ee1_2_test.Model.loginResponse2;
 
@@ -48,4 +50,7 @@ public interface BookstoreApi {
 
     @GET("search/{keyword}")
     Call<List<Book>> getSearchResults(@Path("keyword")String keyword);
+
+    @POST("newUser/register")
+    Call<RegisterResponse> getRegisterResponse(@Body User user);
 }

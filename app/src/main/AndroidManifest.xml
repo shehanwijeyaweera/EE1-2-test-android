@@ -19,6 +19,7 @@
             android:name=".Activity.Userhomepage"
             android:label="OnlineBookStore"
             android:theme="@style/Theme.EE12test.NoActionbar" />
+
         <activity android:name=".Activity.userSingleBookView" />
         <activity android:name=".Activity.viewAllBooksUser" />
         <activity

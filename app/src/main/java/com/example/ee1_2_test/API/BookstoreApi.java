@@ -6,6 +6,7 @@ import com.example.ee1_2_test.Model.Book;
 import com.example.ee1_2_test.Model.CartItem;
 import com.example.ee1_2_test.Model.Customer_orders;
 import com.example.ee1_2_test.Model.RegisterResponse;
+import com.example.ee1_2_test.Model.RequestBook;
 import com.example.ee1_2_test.Model.User;
 import com.example.ee1_2_test.Model.loginResponse;
 import com.example.ee1_2_test.Model.loginResponse2;
@@ -53,4 +54,7 @@ public interface BookstoreApi {
 
     @POST("newUser/register")
     Call<RegisterResponse> getRegisterResponse(@Body User user);
+
+    @POST("bookRequest")
+    Call<loginResponse> getBookRequestResponse(@Body RequestBook requestBook);
 }

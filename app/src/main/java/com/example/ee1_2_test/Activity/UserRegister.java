@@ -56,7 +56,7 @@ public class UserRegister extends AppCompatActivity {
                 User user = new User();
                 user = getInputValues();
                 boolean validate = validateInputFields(user);
-                if(validate == true){
+                if(validate){
                     saveUserDetails(user);
                 }
                 else {

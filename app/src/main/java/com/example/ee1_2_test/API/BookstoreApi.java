@@ -5,6 +5,7 @@ import com.example.ee1_2_test.Model.AdminDashboard;
 import com.example.ee1_2_test.Model.Book;
 import com.example.ee1_2_test.Model.CartItem;
 import com.example.ee1_2_test.Model.Customer_orders;
+import com.example.ee1_2_test.Model.Refund;
 import com.example.ee1_2_test.Model.RegisterResponse;
 import com.example.ee1_2_test.Model.RequestBook;
 import com.example.ee1_2_test.Model.User;
@@ -57,4 +58,7 @@ public interface BookstoreApi {
 
     @POST("bookRequest")
     Call<loginResponse> getBookRequestResponse(@Body RequestBook requestBook);
+
+    @GET("user/refundReq/{user_id}")
+    Call<List<Refund>> getUserRefundRequests(@Path("user_id")int user_id);
 }

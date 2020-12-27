@@ -1,5 +1,6 @@
 package com.example.ee1_2_test.Adapters;
 
+import android.app.role.RoleManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,10 +16,14 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ee1_2_test.Activity.RefundOrder;
 import com.example.ee1_2_test.Activity.orderItems_admin;
 import com.example.ee1_2_test.Model.CustomerOrderItem;
 import com.example.ee1_2_test.Model.Customer_orders;
+import com.example.ee1_2_test.Model.Role;
+import com.example.ee1_2_test.Model.User;
 import com.example.ee1_2_test.R;
+import com.example.ee1_2_test.Sessions.SessionManagement;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -28,6 +33,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder
     private ArrayList<Customer_orders> customer_orders = new ArrayList<>();
     private ArrayList<CustomerOrderItem> customerOrderItems = new ArrayList<>();
     private Context context;
+    private SessionManagement sessionManagement;
 
     public OrdersAdapter(Context context, ArrayList<Customer_orders> customer_orders){
         this.customer_orders = customer_orders;
@@ -51,6 +57,14 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder
             holder.tvFirstName.setText(customer_orders.get(position).getUser().getUserFName());
             holder.tvLastName.setText(customer_orders.get(position).getUser().getUserLName());
 
+            holder.refundBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, RefundOrder.class);
+                    intent.putExtra("orderId", stringInteger);
+                    context.startActivity(intent);
+                }
+            });
 
             holder.viewOrderbtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -79,6 +93,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder
         private TextView tvFirstName;
         private TextView tvLastName;
         private Button viewOrderbtn;
+        private Button refundBtn;
         private ConstraintLayout mainLayout_admin;
 
         public ViewHolder(@NonNull View itemView) {
@@ -90,6 +105,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder
             tvFirstName = itemView.findViewById(R.id.orders_custFName_admin);
             tvLastName = itemView.findViewById(R.id.orders_custLName_admin);
             viewOrderbtn = itemView.findViewById(R.id.orders_viewOrder_adminbtn);
+            refundBtn = itemView.findViewById(R.id.orders_refund_adminbtn);
 
             mainLayout_admin = itemView.findViewById(R.id.orders_mainLayout);
 

@@ -27,6 +27,7 @@ public class orderItems_admin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_items_admin);
 
+
         orderitems_recyclerview_admin = findViewById(R.id.orderitems_recyclerview_admin);
         orderitems_recyclerview_admin.setLayoutManager(new LinearLayoutManager(orderItems_admin.this));
 

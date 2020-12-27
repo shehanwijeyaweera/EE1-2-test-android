@@ -14,7 +14,8 @@
         android:theme="@style/Theme.EE12test">
         <activity android:name=".Activity.UserRegister"
             android:theme="@style/Theme.EE12test.NoActionbar"></activity>
-        <activity android:name=".Activity.orderItems_admin" />
+        <activity android:name=".Activity.orderItems_admin"
+            android:label="Order Items"/>
         <activity
             android:name=".Activity.Userhomepage"
             android:label="OnlineBookStore"

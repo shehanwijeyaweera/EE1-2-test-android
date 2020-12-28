@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,7 +34,6 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder
     private ArrayList<Customer_orders> customer_orders = new ArrayList<>();
     private ArrayList<CustomerOrderItem> customerOrderItems = new ArrayList<>();
     private Context context;
-    private SessionManagement sessionManagement;
 
     public OrdersAdapter(Context context, ArrayList<Customer_orders> customer_orders){
         this.customer_orders = customer_orders;
@@ -49,7 +49,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-              String stringInteger = Integer.toString(customer_orders.get(position).getId());
+            String stringInteger = Integer.toString(customer_orders.get(position).getId());
             holder.tvOrderId.setText(stringInteger);
             holder.tvDatePurchased.setText(customer_orders.get(position).getDatecreation());
             holder.tvStatus.setText(customer_orders.get(position).getStatus());
@@ -94,7 +94,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder
         private TextView tvLastName;
         private Button viewOrderbtn;
         private Button refundBtn;
-        private ConstraintLayout mainLayout_admin;
+        private CardView mainLayout_admin;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true"
+    android:id="@+id/ordersAdmin_mainLayout">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16sp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order ID"
+            android:id="@+id/orderID_orders_admin"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/orderDate_orders_admin"
+            android:text="Order Date"
+            android:layout_toRightOf="@+id/orderID_orders_admin"
+            android:layout_toEndOf="@+id/orderID_orders_admin"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/orderStatus_orders_admin"
+            android:text="status"
+            android:layout_toRightOf="@+id/orderDate_orders_admin"
+            android:layout_toEndOf="@+id/orderDate_orders_admin"
+            android:layout_marginLeft="50dp"
+            android:layout_marginStart="50dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ordershipping_orders_admin"
+            android:text="Shipping status"
+            android:layout_toRightOf="@+id/orderStatus_orders_admin"
+            android:layout_toEndOf="@+id/orderStatus_orders_admin"
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/orderFName_orders_admin"
+            android:text="First Name"
+            android:layout_marginTop="50dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/orderLName_orders_admin"
+            android:text="Last Name"
+            android:layout_toRightOf="@+id/orderFName_orders_admin"
+            android:layout_toEndOf="@+id/orderFName_orders_admin"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/viewOrderbtn_orders_admin"
+            android:text="View"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="275dp"
+            android:layout_marginTop="50dp" />
+
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

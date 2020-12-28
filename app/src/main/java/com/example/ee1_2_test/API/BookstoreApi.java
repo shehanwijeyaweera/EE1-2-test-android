@@ -67,4 +67,7 @@ public interface BookstoreApi {
 
     @GET("user/getprofileInfo/{user_id}")
     Call<User> getprofileInfo(@Path("user_id")int id);
+
+    @POST("user/updateprofile/{user_id}")
+    Call<loginResponse> updateprofiledata(@Path("user_id")int id, @Body User user);
 }

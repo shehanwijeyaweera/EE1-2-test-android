@@ -1,5 +1,6 @@
 package com.example.ee1_2_test.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.ee1_2_test.API.BookstoreApi;
+import com.example.ee1_2_test.Activity.Editprofile_user;
+import com.example.ee1_2_test.Activity.MainActivity;
 import com.example.ee1_2_test.Model.ApiClient;
 import com.example.ee1_2_test.Model.User;
 import com.example.ee1_2_test.R;
@@ -25,7 +28,7 @@ import retrofit2.Response;
 
 public class ProfileInfoFragmentUser extends Fragment {
 
-    private TextView fullname, email, phoneNo, username;
+    private TextView fullname, email, phoneNo, username, address;
     private ProgressBar loadingdata;
     private BookstoreApi bookstoreApi;
     private Button editBtn;
@@ -43,11 +46,20 @@ public class ProfileInfoFragmentUser extends Fragment {
         phoneNo = view.findViewById(R.id.profile_phoneNo_user);
         username = view.findViewById(R.id.profile_username_user);
         loadingdata = view.findViewById(R.id.profile_progressBar2_user);
+        address = view.findViewById(R.id.profile_userAddress_user);
         editBtn = view.findViewById(R.id.profile_editbtn_user);
 
         loadingdata.setVisibility(View.VISIBLE);
         getResponse();
         loadingdata.setVisibility(View.INVISIBLE);
+
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(getContext(), Editprofile_user.class);
+                getContext().startActivity(intent);
+            }
+        });
 
         return view;
     }
@@ -67,6 +79,7 @@ public class ProfileInfoFragmentUser extends Fragment {
                 email.setText("Email :"+user.getUserEmail());
                 phoneNo.setText("Phone No :"+newUser.getUserPhoneNo().toString());
                 username.setText("Username :"+newUser.getUsername());
+                address.setText("Address :"+newUser.getUserAddress());
             }
 
             @Override

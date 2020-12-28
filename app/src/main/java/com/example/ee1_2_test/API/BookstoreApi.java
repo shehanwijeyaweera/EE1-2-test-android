@@ -64,4 +64,7 @@ public interface BookstoreApi {
 
     @POST("user/refundReq/{order_id}/{user_id}")
     Call<loginResponse> postRefundReq(@Body Refund refund,@Path("order_id")String order_id,@Path("user_id") int user_id);
+
+    @GET("user/getprofileInfo/{user_id}")
+    Call<User> getprofileInfo(@Path("user_id")int id);
 }

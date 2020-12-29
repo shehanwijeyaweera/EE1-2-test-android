@@ -46,6 +46,9 @@ public class Book implements Serializable {
     @Expose
     private List<Category> categories = null;
 
+    public Book() {
+    }
+
     public Book(Integer bookId, String title, String description, Double price, String publisher, String logo, String pubdate, Integer isbn, String logoImagepathApi, String logoImagePath, List<Author> authors, List<Category> categories) {
         this.bookId = bookId;
         this.title = title;

@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EE12test">
-        <activity android:name=".Activity.Editprofile_user"></activity>
+        <activity android:name=".Activity.AdminEditBook"></activity>
+        <activity android:name=".Activity.Editprofile_user" />
         <activity
             android:name=".Activity.RefundOrder"
             android:label="Refund Order" />

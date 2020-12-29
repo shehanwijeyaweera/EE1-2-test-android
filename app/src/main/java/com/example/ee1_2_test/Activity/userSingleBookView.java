@@ -41,6 +41,7 @@ public class userSingleBookView extends AppCompatActivity implements AddToCartDi
         editbook = findViewById(R.id.edit_book_admin);
 
         Intent intent = getIntent();
+        int id = intent.getExtras().getInt("ID");
         String Title = intent.getExtras().getString("Title");
         String Description = intent.getExtras().getString("Description");
         String imagepath = intent.getExtras().getString("Thumbnail");
@@ -71,7 +72,24 @@ public class userSingleBookView extends AppCompatActivity implements AddToCartDi
             editbook.setVisibility(View.INVISIBLE);
         }
 
+        editbook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(userSingleBookView.this, AdminEditBook.class);
 
+                intent.putExtra("ID", id);
+                intent.putExtra("Title", Title);
+                intent.putExtra("Description", Description);
+                intent.putExtra("Thumbnail", imagepath);
+                intent.putExtra("category", category);
+                intent.putExtra("pubdate", pubdate);
+                intent.putExtra("publisher", publisher);
+                intent.putExtra("price", price);
+                intent.putExtra("author", author);
+
+                userSingleBookView.this.startActivity(intent);
+            }
+        });
 
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override

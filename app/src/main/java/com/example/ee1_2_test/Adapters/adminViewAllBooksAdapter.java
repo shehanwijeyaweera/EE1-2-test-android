@@ -50,6 +50,7 @@ public class adminViewAllBooksAdapter extends RecyclerView.Adapter<adminViewAllB
             public void onClick(View v) {
                 Intent intent = new Intent(context, userSingleBookView.class);
 
+                intent.putExtra("ID", books.get(position).getBookId());
                 intent.putExtra("Title", books.get(position).getTitle());
                 intent.putExtra("Description", books.get(position).getDescription());
                 intent.putExtra("Thumbnail", books.get(position).getLogoImagepathApi());

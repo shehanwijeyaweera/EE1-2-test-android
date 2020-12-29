@@ -70,4 +70,7 @@ public interface BookstoreApi {
 
     @POST("user/updateprofile/{user_id}")
     Call<loginResponse> updateprofiledata(@Path("user_id")int id, @Body User user);
+
+    @POST("admin/updatebook/save/{bookId}")
+    Call<loginResponse> updateBookDetails(@Body Book book,@Path("bookId")int bookId);
 }

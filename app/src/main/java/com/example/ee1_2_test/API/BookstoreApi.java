@@ -2,6 +2,7 @@ package com.example.ee1_2_test.API;
 
 import com.example.ee1_2_test.JSON.Checkout;
 import com.example.ee1_2_test.Model.AdminDashboard;
+import com.example.ee1_2_test.Model.Author;
 import com.example.ee1_2_test.Model.Book;
 import com.example.ee1_2_test.Model.CartItem;
 import com.example.ee1_2_test.Model.Category;
@@ -77,4 +78,7 @@ public interface BookstoreApi {
 
     @GET("admin/categories")
     Call<List<Category>> getAllCategories();
+
+    @GET("admin/authors")
+    Call<List<Author>> getAllAuthors();
 }

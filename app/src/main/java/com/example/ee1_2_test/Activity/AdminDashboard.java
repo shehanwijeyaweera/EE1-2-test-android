@@ -16,7 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ee1_2_test.Fragments.AboutUsFragmentUser;
+import com.example.ee1_2_test.Fragments.AddAuthorFragmentAdmin;
+import com.example.ee1_2_test.Fragments.AddBookFragmentAdmin;
+import com.example.ee1_2_test.Fragments.AddCategoryFragmentAdmin;
 import com.example.ee1_2_test.Fragments.AddToCartFragmentUser;
+import com.example.ee1_2_test.Fragments.AddUserFragmentAdmin;
 import com.example.ee1_2_test.Fragments.AuthorFragmentAdmin;
 import com.example.ee1_2_test.Fragments.BookFragmentAdmin;
 import com.example.ee1_2_test.Fragments.BookRequestFragmentAdmin;
@@ -30,6 +34,8 @@ import com.example.ee1_2_test.Fragments.PendingOrdersFragmentAdmin;
 import com.example.ee1_2_test.Fragments.ProfileInfoFragmentUser;
 import com.example.ee1_2_test.Fragments.RefundFragmentAdmin;
 import com.example.ee1_2_test.Fragments.RefundResponseFragmentUser;
+import com.example.ee1_2_test.Fragments.RefundedRefundsFragmentAdmin;
+import com.example.ee1_2_test.Fragments.RejectedRefundFragmentAdmin;
 import com.example.ee1_2_test.Fragments.RequestBookFragmentUser;
 import com.example.ee1_2_test.Fragments.ShippedOrdersFragmentAdmin;
 import com.example.ee1_2_test.Fragments.UserFragmentAdmin;
@@ -78,11 +84,20 @@ public class AdminDashboard extends AppCompatActivity implements NavigationView.
             case R.id.nav_admin_dashboard:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer_admin,new DashboardFragmentAdmin()).commit();
                 break;
+            case R.id.nav_admin_addbook:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer_admin,new AddBookFragmentAdmin()).commit();
+                break;
             case R.id.nav_admin_viewallbook:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer_admin,new BookFragmentAdmin()).commit();
                 break;
+            case R.id.nav_admin_addcategory:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer_admin,new AddCategoryFragmentAdmin()).commit();
+                break;
             case R.id.nav_admin_viewallcategory:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer_admin,new CategoryFragmentAdmin()).commit();
+                break;
+            case R.id.nav_admin_addauthor:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer_admin,new AddAuthorFragmentAdmin()).commit();
                 break;
             case R.id.nav_admin_viewallauthor:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer_admin,new AuthorFragmentAdmin()).commit();
@@ -99,11 +114,20 @@ public class AdminDashboard extends AppCompatActivity implements NavigationView.
             case R.id.nav_admin_viewallrefunds:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer_admin,new RefundFragmentAdmin()).commit();
                 break;
+            case R.id.nav_admin_refundedrefunds:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer_admin,new RefundedRefundsFragmentAdmin()).commit();
+                break;
+            case R.id.nav_admin_rejectedrefunds:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer_admin,new RejectedRefundFragmentAdmin()).commit();
+                break;
             case R.id.nav_admin_bookrequest:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer_admin,new BookRequestFragmentAdmin()).commit();
                 break;
             case R.id.nav_admin_viewallusers:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer_admin,new UserFragmentAdmin()).commit();
+                break;
+            case R.id.nav_admin_addusers:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contrainer_admin,new AddUserFragmentAdmin()).commit();
                 break;
             case R.id.nav_admin_logout:
                 Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();

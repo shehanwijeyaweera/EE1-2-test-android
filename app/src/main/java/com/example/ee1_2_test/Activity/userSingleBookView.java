@@ -19,7 +19,7 @@ public class userSingleBookView extends AppCompatActivity implements AddToCartDi
 
     private TextView tvTitle, tvDescription, tvCategory, tvpublisher, tvpubdate, tvprice, tvauthor;
     private ImageView bookImage;
-    private Button addToCart;
+    private Button addToCart, editbook;
     private Book bookDetails;
     int quantityValue;
 
@@ -38,7 +38,7 @@ public class userSingleBookView extends AppCompatActivity implements AddToCartDi
         tvprice = findViewById(R.id.price_user_view_single_book);
         tvauthor = findViewById(R.id.author_user_view_single_book);
         addToCart = findViewById(R.id.add_to_cart);
-
+        editbook = findViewById(R.id.edit_book_admin);
 
         Intent intent = getIntent();
         String Title = intent.getExtras().getString("Title");
@@ -60,6 +60,17 @@ public class userSingleBookView extends AppCompatActivity implements AddToCartDi
         tvprice.setText(stringdouble);
         tvauthor.setText("Author: "+author);
         Picasso.get().load(imagepath).into(bookImage);
+
+        SessionManagement sessionManagement = new SessionManagement(userSingleBookView.this);
+        final String role = sessionManagement.getRole();
+
+        if(role.equalsIgnoreCase("Admin")){
+            addToCart.setVisibility(View.INVISIBLE);
+        }
+        if(role.equalsIgnoreCase("User")){
+            editbook.setVisibility(View.INVISIBLE);
+        }
+
 
 
         addToCart.setOnClickListener(new View.OnClickListener() {

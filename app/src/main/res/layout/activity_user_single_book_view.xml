@@ -108,6 +108,16 @@
                 android:background="#ff751a"
                 android:layout_alignParentBottom="true"/>
 
+            <Button
+                android:id="@+id/edit_book_admin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:layout_margin="8dp"
+                android:background="#ff751a"
+                android:text="Edit" />
+
         </LinearLayout>
 
 

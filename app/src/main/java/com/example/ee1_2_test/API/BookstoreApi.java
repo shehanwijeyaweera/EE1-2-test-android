@@ -4,6 +4,7 @@ import com.example.ee1_2_test.JSON.Checkout;
 import com.example.ee1_2_test.Model.AdminDashboard;
 import com.example.ee1_2_test.Model.Book;
 import com.example.ee1_2_test.Model.CartItem;
+import com.example.ee1_2_test.Model.Category;
 import com.example.ee1_2_test.Model.Customer_orders;
 import com.example.ee1_2_test.Model.Refund;
 import com.example.ee1_2_test.Model.RegisterResponse;
@@ -73,4 +74,7 @@ public interface BookstoreApi {
 
     @POST("admin/updatebook/save/{bookId}")
     Call<loginResponse> updateBookDetails(@Body Book book,@Path("bookId")int bookId);
+
+    @GET("admin/categories")
+    Call<List<Category>> getAllCategories();
 }

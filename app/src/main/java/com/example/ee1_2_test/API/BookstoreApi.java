@@ -99,4 +99,13 @@ public interface BookstoreApi {
 
     @POST("admin/addnewAuthor/save")
     Call<loginResponse> addNewAuthor(@Body Author newAuthor);
+
+    @GET("admin/getAllNonresponededRefundreq")
+    Call<List<Refund>> getAllNonResponededRefundRequests();
+
+    @GET("admin/getAllRefundedRefunds")
+    Call<List<Refund>> getRefundedRefundRequests();
+
+    @GET("admin/getAllRejectedRefunds")
+    Call<List<Refund>> getRejectedRefundRequests();
 }

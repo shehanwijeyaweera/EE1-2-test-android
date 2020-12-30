@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ee1_2_test.API.BookstoreApi;
 import com.example.ee1_2_test.Adapters.OrdersAdapter;
+import com.example.ee1_2_test.Adapters.OrdersAdapterAdmin;
 import com.example.ee1_2_test.Model.ApiClient;
 import com.example.ee1_2_test.Model.Customer_orders;
 import com.example.ee1_2_test.R;
@@ -29,7 +30,7 @@ public class PendingOrdersFragmentAdmin extends Fragment {
 
     private RecyclerView Pendingorders_recyclerview_admin;
     private BookstoreApi bookstoreApi;
-    private OrdersAdapter ordersAdapter;
+    private OrdersAdapterAdmin ordersAdapter;
     ArrayList<Customer_orders> customer_orders = new ArrayList<>();
 
     @Nullable
@@ -57,7 +58,7 @@ public class PendingOrdersFragmentAdmin extends Fragment {
             @Override
             public void onResponse(Call<List<Customer_orders>> call, Response<List<Customer_orders>> response) {
                 customer_orders = new ArrayList<>(response.body());
-                ordersAdapter = new OrdersAdapter(getContext(),customer_orders);
+                ordersAdapter = new OrdersAdapterAdmin(customer_orders, getContext());
                 Pendingorders_recyclerview_admin.setAdapter(ordersAdapter);
             }
 

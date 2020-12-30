@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/refund_mainLayout_admin"
+    android:paddingBottom="2dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="3dp"
+        app:cardUseCompatPadding="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/refundRequest_refundID_admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="20dp"
+        android:text="Refund ID"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/refundRequest_refundDate_admin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="20dp"
+                android:text="Refund Date"
+                app:layout_constraintStart_toEndOf="@+id/refundRequest_refundID_admin"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/refundRequest_refundResponse_admin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Response"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.761"
+                app:layout_constraintStart_toEndOf="@+id/refundRequest_refundDate_admin"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+        android:id="@+id/refundRequest_viewbtn_admin"
+        android:layout_width="92dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="12dp"
+        android:textSize="10sp"
+        android:text="View"
+        app:backgroundTint="#FF5722"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/refundRequest_refundReason_admin" />
+
+    <Button
+        android:id="@+id/refundRequest_rejectBtn_admin"
+        android:layout_width="53dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="12dp"
+        android:text="X"
+        app:backgroundTint="#F60303"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.184"
+        app:layout_constraintStart_toEndOf="@+id/refundRequest_acceptbtn_admin"
+        app:layout_constraintTop_toBottomOf="@+id/refundRequest_refundReason_admin" />
+
+    <TextView
+        android:id="@+id/refundRequest_refundReason_admin"
+        android:layout_width="327dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="12dp"
+        android:text="Reason"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/refundRequest_refundDate_admin" />
+
+    <Button
+        android:id="@+id/refundRequest_acceptbtn_admin"
+        android:layout_width="85dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginLeft="76dp"
+        android:layout_marginTop="12dp"
+        android:text="Approve"
+        android:textSize="10sp"
+        app:backgroundTint="#4CAF50"
+        app:layout_constraintStart_toEndOf="@+id/refundRequest_viewbtn_admin"
+        app:layout_constraintTop_toBottomOf="@+id/refundRequest_refundReason_admin" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

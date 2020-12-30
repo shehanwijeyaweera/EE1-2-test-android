@@ -93,4 +93,10 @@ public interface BookstoreApi {
 
     @GET("admin/deleteAuthor/{authorID}")
     Call<loginResponse> deleteAuthor(@Path("authorID") int id);
+
+    @POST("admin/addnewCategory/save")
+    Call<loginResponse> addnewCategory(@Body Category newCategory);
+
+    @POST("admin/addnewAuthor/save")
+    Call<loginResponse> addNewAuthor(@Body Author newAuthor);
 }

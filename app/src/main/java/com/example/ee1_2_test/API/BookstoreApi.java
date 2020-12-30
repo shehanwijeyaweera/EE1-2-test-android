@@ -108,4 +108,10 @@ public interface BookstoreApi {
 
     @GET("admin/getAllRejectedRefunds")
     Call<List<Refund>> getRejectedRefundRequests();
+
+    @GET("admin/rejectRequest/{refundId}")
+    Call<loginResponse> rejectRefund(@Path("refundId") int id);
+
+    @GET("admin/acceptRequest/{refundId}")
+    Call<loginResponse> acceptRefund(@Path("refundId")int id);
 }

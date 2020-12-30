@@ -25,17 +25,27 @@ public class RefundAdapterAdmin extends RecyclerView.Adapter<RefundAdapterAdmin.
     private ArrayList<CustomerOrderItem> customerOrderItems = new ArrayList<>();
     public Customer_orders customerOrders;
     private Context context;
+    private OnItemClickListener mListener;
 
     public RefundAdapterAdmin(ArrayList<Refund> refunds, Context context) {
         this.refunds = refunds;
         this.context = context;
     }
 
+    public interface OnItemClickListener{
+        void onItemClick(int position);
+        void onRejected(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        mListener = listener;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.refund_row_admin,parent,false);
-        return new ViewHolder(view);
+        return new ViewHolder(view, mListener);
     }
 
     @Override
@@ -75,7 +85,7 @@ public class RefundAdapterAdmin extends RecyclerView.Adapter<RefundAdapterAdmin.
         private Button rejectbtn;
         private ConstraintLayout mainLayout_admin;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
             refundReq_id = itemView.findViewById(R.id.refundRequest_refundID_admin);
             refundReq_date = itemView.findViewById(R.id.refundRequest_refundDate_admin);
@@ -86,6 +96,30 @@ public class RefundAdapterAdmin extends RecyclerView.Adapter<RefundAdapterAdmin.
             rejectbtn = itemView.findViewById(R.id.refundRequest_rejectBtn_admin);
 
             mainLayout_admin = itemView.findViewById(R.id.refund_mainLayout_admin);
+
+            acceptbtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener != null){
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
+
+            rejectbtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener != null){
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            listener.onRejected(position);
+                        }
+                    }
+                }
+            });
         }
 
     }

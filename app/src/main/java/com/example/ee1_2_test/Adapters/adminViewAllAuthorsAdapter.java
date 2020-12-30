@@ -22,10 +22,19 @@ public class adminViewAllAuthorsAdapter extends RecyclerView.Adapter<adminViewAl
 
     private ArrayList<Author> authors = new ArrayList<>();
     private Context context;
+    private OnItemClickListener mListener;
 
     public adminViewAllAuthorsAdapter(ArrayList<Author> authors, Context context) {
         this.authors = authors;
         this.context = context;
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        mListener = listener;
     }
 
     @NonNull
@@ -34,7 +43,7 @@ public class adminViewAllAuthorsAdapter extends RecyclerView.Adapter<adminViewAl
         View view;
         LayoutInflater mInflater = LayoutInflater.from(context);
         view = mInflater.inflate(R.layout.author_row, parent, false);
-        return new adminViewAllAuthorsAdapter.ViewHolder(view);
+        return new adminViewAllAuthorsAdapter.ViewHolder(view, mListener);
     }
 
     @Override
@@ -65,7 +74,7 @@ public class adminViewAllAuthorsAdapter extends RecyclerView.Adapter<adminViewAl
         Button editbtn, deletebtn;
         ConstraintLayout mainlayout;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
             author_id = itemView.findViewById(R.id.author_authorId_admin);
             author_name = itemView.findViewById(R.id.author_authorName_admin);
@@ -75,6 +84,17 @@ public class adminViewAllAuthorsAdapter extends RecyclerView.Adapter<adminViewAl
 
             mainlayout = itemView.findViewById(R.id.mainlayout_author);
 
+            deletebtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener != null){
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }

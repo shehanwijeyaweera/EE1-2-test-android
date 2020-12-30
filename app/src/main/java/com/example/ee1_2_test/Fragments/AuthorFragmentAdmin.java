@@ -20,6 +20,7 @@ import com.example.ee1_2_test.Model.ApiClient;
 import com.example.ee1_2_test.Model.Author;
 import com.example.ee1_2_test.Model.Category;
 import com.example.ee1_2_test.Model.Customer_orders;
+import com.example.ee1_2_test.Model.loginResponse;
 import com.example.ee1_2_test.R;
 
 import java.util.ArrayList;
@@ -62,6 +63,16 @@ public class AuthorFragmentAdmin extends Fragment {
                 adminViewAllAuthorsAdapter = new adminViewAllAuthorsAdapter(authors, getContext());
                 authors_recyclerview.setAdapter(adminViewAllAuthorsAdapter);
                 Toast.makeText(getContext(), "Success",Toast.LENGTH_SHORT).show();
+
+                //set on click listners
+                adminViewAllAuthorsAdapter.setOnItemClickListener(new adminViewAllAuthorsAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(int position) {
+                        int id = authors.get(position).getAuthorId();
+                        removeItem(position);
+                        deleteItem(id);
+                    }
+                });
             }
 
             @Override
@@ -69,5 +80,36 @@ public class AuthorFragmentAdmin extends Fragment {
                 Toast.makeText(getContext(), "Failed",Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void deleteItem(int id) {
+        bookstoreApi = ApiClient.getClient().create(BookstoreApi.class);
+
+        Call<loginResponse> call = bookstoreApi.deleteAuthor(id);
+
+        call.enqueue(new Callback<loginResponse>() {
+            @Override
+            public void onResponse(Call<loginResponse> call, Response<loginResponse> response) {
+                loginResponse loginRes = response.body();
+
+                if(loginRes.getResponse().matches("Correct")){
+                    Toast.makeText(getContext(), "Author Deleted", Toast.LENGTH_SHORT).show();
+                }
+                else if(loginRes.getResponse().matches("Failed")){
+                    //error message
+                }
+            }
+
+            @Override
+            public void onFailure(Call<loginResponse> call, Throwable t) {
+                Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void removeItem(int position) {
+        authors.remove(position);
+        adminViewAllAuthorsAdapter.notifyItemRemoved(position);
+        onResume();
     }
 }

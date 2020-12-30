@@ -41,6 +41,8 @@ public class AuthorFragmentAdmin extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        getActivity().setTitle("View All Authors");
+
         View view = inflater.inflate(R.layout.admin_fragment_author,container,false);
 
         authors_recyclerview = view.findViewById(R.id.author_recyclerview_admin);

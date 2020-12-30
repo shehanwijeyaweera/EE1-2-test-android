@@ -36,7 +36,7 @@ public class PendingOrdersFragmentAdmin extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
+        getActivity().setTitle("View All Pending Orders");
 
         View view = inflater.inflate(R.layout.admin_fragment_pendingorders,container,false);
 

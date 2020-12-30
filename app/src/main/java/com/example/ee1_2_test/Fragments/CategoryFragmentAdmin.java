@@ -45,7 +45,7 @@ public class CategoryFragmentAdmin extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
+        getActivity().setTitle("View All Categories");
         View view = inflater.inflate(R.layout.admin_fragment_category,container,false);
 
         categories_recyclerview = view.findViewById(R.id.category_recyclerview_admin);

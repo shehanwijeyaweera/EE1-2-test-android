@@ -16,6 +16,9 @@ public class DashboardFragmentStoreworker extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.storeworker_fragment_dashboard,container,false);
+        getActivity().setTitle(" ");
+        View view = inflater.inflate(R.layout.storeworker_fragment_dashboard,container,false);
+
+        return view;
     }
 }

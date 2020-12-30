@@ -33,6 +33,7 @@ public class AddCategoryFragmentAdmin extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        getActivity().setTitle(" ");
         View view = inflater.inflate(R.layout.admin_fragment_add_category, container, false);
 
         categoryName = view.findViewById(R.id.addNewCategory_categoryName_admin);

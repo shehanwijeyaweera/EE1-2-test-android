@@ -36,7 +36,7 @@ public class ShippedOrdersFragmentAdmin extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
+        getActivity().setTitle("Shipped Orders");
 
         View view = inflater.inflate(R.layout.admin_fragment_shippedorders,container,false);
 

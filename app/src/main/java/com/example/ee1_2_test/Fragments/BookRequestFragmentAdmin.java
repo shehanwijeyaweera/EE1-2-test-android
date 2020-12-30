@@ -16,6 +16,7 @@ public class BookRequestFragmentAdmin extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        getActivity().setTitle("View All book requests");
         return inflater.inflate(R.layout.admin_fragment_bookrequest,container,false);
     }
 }

@@ -37,7 +37,7 @@ public class OrdersFragmentAdmin extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
+        getActivity().setTitle("View All Orders");
 
         View view = inflater.inflate(R.layout.admin_fragment_orders,container,false);
 

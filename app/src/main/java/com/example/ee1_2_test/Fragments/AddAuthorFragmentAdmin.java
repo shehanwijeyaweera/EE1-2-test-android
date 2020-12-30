@@ -33,6 +33,7 @@ public class AddAuthorFragmentAdmin extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        getActivity().setTitle(" ");
         View view = inflater.inflate(R.layout.admin_fragment_add_author,container,false);
 
         authorName = view.findViewById(R.id.AddNewAuthor_authorName_admin);

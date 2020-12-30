@@ -30,6 +30,7 @@ public class DashboardFragmentAdmin extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        getActivity().setTitle(" ");
         View view = inflater.inflate(R.layout.admin_fragment_dashboard,container,false);
 
         Sales = view.findViewById(R.id.admin_dashboard_sales);

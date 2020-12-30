@@ -41,6 +41,7 @@ public class BookFragmentAdmin extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        getActivity().setTitle("View All Books");
         View view = inflater.inflate(R.layout.admin_fragment_book,container,false);
 
         books_recyclerview = view.findViewById(R.id.books_recyclerview_admin_view_all_books);

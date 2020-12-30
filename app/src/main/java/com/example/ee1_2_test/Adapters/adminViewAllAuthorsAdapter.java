@@ -1,6 +1,7 @@
 package com.example.ee1_2_test.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ee1_2_test.Activity.AdmineditAuthor;
 import com.example.ee1_2_test.Model.Author;
 import com.example.ee1_2_test.R;
 
@@ -39,6 +41,18 @@ public class adminViewAllAuthorsAdapter extends RecyclerView.Adapter<adminViewAl
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.author_id.setText(authors.get(position).getAuthorId().toString());
         holder.author_name.setText(authors.get(position).getAuthorName());
+
+        holder.editbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, AdmineditAuthor.class);
+
+                intent.putExtra("ID", authors.get(position).getAuthorId());
+                intent.putExtra("author_name", authors.get(position).getAuthorName());
+
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

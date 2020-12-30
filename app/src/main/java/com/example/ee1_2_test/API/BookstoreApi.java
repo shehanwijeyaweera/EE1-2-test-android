@@ -81,4 +81,10 @@ public interface BookstoreApi {
 
     @GET("admin/authors")
     Call<List<Author>> getAllAuthors();
+
+    @POST("admin/updateCategory/{categoryid}")
+    Call<loginResponse> updateCategorydetails(@Body Category updatedCategory,@Path("categoryid") int id);
+
+    @POST("admin/updateAuthor/{authorid}")
+    Call<loginResponse> updateAuthorDetails(@Body Author updatedAuthor,@Path("authorid") int id);
 }

@@ -10,6 +10,7 @@ import com.example.ee1_2_test.Model.Customer_orders;
 import com.example.ee1_2_test.Model.Refund;
 import com.example.ee1_2_test.Model.RegisterResponse;
 import com.example.ee1_2_test.Model.RequestBook;
+import com.example.ee1_2_test.Model.RequestBook2;
 import com.example.ee1_2_test.Model.User;
 import com.example.ee1_2_test.Model.loginResponse;
 import com.example.ee1_2_test.Model.loginResponse2;
@@ -114,4 +115,7 @@ public interface BookstoreApi {
 
     @GET("admin/acceptRequest/{refundId}")
     Call<loginResponse> acceptRefund(@Path("refundId")int id);
+
+    @GET("admin/getAllBookRequests")
+    Call<List<RequestBook2>> getAllBookRequests();
 }

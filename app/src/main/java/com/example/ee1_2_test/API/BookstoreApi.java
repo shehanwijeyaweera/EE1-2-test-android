@@ -1,6 +1,7 @@
 package com.example.ee1_2_test.API;
 
 import com.example.ee1_2_test.JSON.Checkout;
+import com.example.ee1_2_test.Model.AddbookSpinnerData;
 import com.example.ee1_2_test.Model.AdminDashboard;
 import com.example.ee1_2_test.Model.Author;
 import com.example.ee1_2_test.Model.Book;
@@ -118,4 +119,7 @@ public interface BookstoreApi {
 
     @GET("admin/getAllBookRequests")
     Call<List<RequestBook2>> getAllBookRequests();
+
+    @GET("admin/addBook/getSpinnerData")
+    Call<AddbookSpinnerData> getAddBookSpinnerData();
 }

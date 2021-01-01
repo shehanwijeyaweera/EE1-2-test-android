@@ -30,7 +30,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName2"
+                android:id="@+id/addNewBook_bookTitle_admin"
                 android:layout_width="360dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="308dp"
@@ -42,17 +42,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/addNewBook_imagepreview_admin"
                 android:layout_width="139dp"
                 android:layout_height="192dp"
                 android:layout_marginTop="28dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView14"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@tools:sample/avatars"
+                android:scaleType="centerCrop"/>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/addbook_selectImage_admin"
                 android:layout_width="148dp"
                 android:layout_height="46dp"
                 android:layout_marginTop="12dp"
@@ -61,10 +62,10 @@
                 app:backgroundTint="#4CAF50"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+                app:layout_constraintTop_toBottomOf="@+id/addNewBook_imagepreview_admin" />
 
             <EditText
-                android:id="@+id/editTextNumber"
+                android:id="@+id/addNewBook_isbn_admin"
                 android:layout_width="360dp"
                 android:layout_height="52dp"
                 android:layout_marginTop="16dp"
@@ -73,10 +74,10 @@
                 android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+                app:layout_constraintTop_toBottomOf="@+id/addNewBook_bookTitle_admin" />
 
             <EditText
-                android:id="@+id/editTextNumber2"
+                android:id="@+id/addNewBook_price_admin"
                 android:layout_width="356dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="16dp"
@@ -85,10 +86,10 @@
                 android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+                app:layout_constraintTop_toBottomOf="@+id/addNewBook_isbn_admin" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName5"
+                android:id="@+id/addNewBook_publisher_admin"
                 android:layout_width="358dp"
                 android:layout_height="47dp"
                 android:layout_marginTop="8dp"
@@ -98,7 +99,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.484"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextNumber2" />
+                app:layout_constraintTop_toBottomOf="@+id/addNewBook_price_admin" />
 
             <Spinner
                 android:id="@+id/addNewBook_spinnerCategory_admin"
@@ -107,7 +108,7 @@
                 android:layout_marginTop="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+                app:layout_constraintTop_toBottomOf="@+id/addNewBook_publisher_admin" />
 
             <TextView
                 android:id="@+id/textView15"
@@ -140,7 +141,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-                android:id="@+id/editTextDate"
+                android:id="@+id/addNewBook_pubdate_admin"
                 android:layout_width="358dp"
                 android:layout_height="41dp"
                 android:layout_marginTop="28dp"
@@ -153,7 +154,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/addNewBook_spinnerAuthor_admin" />
 
             <EditText
-                android:id="@+id/editTextTextMultiLine"
+                android:id="@+id/addNewBook_description_admin"
                 android:layout_width="359dp"
                 android:layout_height="110dp"
                 android:layout_marginTop="16dp"
@@ -163,10 +164,10 @@
                 android:inputType="textMultiLine"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+                app:layout_constraintTop_toBottomOf="@+id/addNewBook_pubdate_admin" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/addNewBook_savebtn_admin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -174,7 +175,7 @@
                 app:backgroundTint="#FF5722"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
+                app:layout_constraintTop_toBottomOf="@+id/addNewBook_description_admin" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

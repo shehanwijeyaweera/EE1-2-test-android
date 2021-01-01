@@ -19,10 +19,13 @@ import com.example.ee1_2_test.Model.loginResponse2;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface BookstoreApi {
@@ -122,4 +125,11 @@ public interface BookstoreApi {
 
     @GET("admin/addBook/getSpinnerData")
     Call<AddbookSpinnerData> getAddBookSpinnerData();
+
+    @POST("admin/savebook/{categoryID}/{authorID}")
+    Call<loginResponse> saveBookData(@Body Book book, @Path("categoryID")int categoryID, @Path("authorID")int authorID);
+
+    @Multipart
+    @POST("admin/savebookImage/{bookId}")
+    Call<loginResponse> saveBookImage(@Part MultipartBody.Part file, @Path("bookId") int bookID);
 }

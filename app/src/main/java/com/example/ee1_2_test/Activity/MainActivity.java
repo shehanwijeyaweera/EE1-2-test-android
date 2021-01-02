@@ -71,11 +71,10 @@ public class MainActivity extends AppCompatActivity {
                 String username1 = username.getText().toString();
                 String password1 = password.getText().toString();
 
-                if(!username1.isEmpty() && !password1.isEmpty()) {
+                if (!username1.isEmpty() && !password1.isEmpty()) {
                     loginfunction(username1, password1);
-                }
-                else {
-                    Toast.makeText(getApplicationContext(),"Enter Username and password", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Enter Username and password", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -84,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void loginfunction(String username, String password) {
 
-        
+
         bookstoreApi = ApiClient.getClient().create(BookstoreApi.class);
 
         Call<loginResponse2> call = bookstoreApi.getloginRespones(username, password);
@@ -93,40 +92,47 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<loginResponse2> call, Response<loginResponse2> response) {
 
-                if(!response.isSuccessful()){
-                    Toast.makeText(getApplicationContext(),"Error Response", Toast.LENGTH_SHORT).show();
+                if (!response.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(), "Error Response", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 loginResponse2 loginRes = response.body();
 
 
-                if(loginRes.getResponse().equalsIgnoreCase("Correct")){
-                    Toast.makeText(getApplicationContext(),"Login Success : "+loginRes.getUser().getUsername(), Toast.LENGTH_SHORT).show();
+                if (loginRes.getResponse().equalsIgnoreCase("Correct")) {
+                    Toast.makeText(getApplicationContext(), "Login Success : " + loginRes.getUser().getUsername(), Toast.LENGTH_SHORT).show();
                     SessionManagement sessionManagement = new SessionManagement(MainActivity.this);
                     sessionManagement.saveSession(loginRes.getUser(), loginRes.getRole());
                     String role = sessionManagement.getRole();
-                    if(role.equalsIgnoreCase("Admin")){
+                    if (role.equalsIgnoreCase("Admin")) {
                         moveToAdminDashboard();
-                    }else if(role.equalsIgnoreCase("User")) {
-                        moveToMainActivity();
-                    }else if(role.equalsIgnoreCase("Storeworker")) {
+                    } else if (role.equalsIgnoreCase("User")) {
+                        if(loginRes.getUser().getEnabled().equals(Boolean.TRUE)) {
+                            moveToMainActivity();
+                        }else {
+                            moveToVerifyPage();
+                        }
+                    } else if (role.equalsIgnoreCase("Storeworker")) {
                         moveToStoreworkerDashboard();
                     }
-                }
-                else if(loginRes.getResponse().equalsIgnoreCase("Wrong")){
-                    Toast.makeText(getApplicationContext(),"Login Error : "+loginRes.getUser().getUsername(), Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(getApplicationContext(),"Login Error", Toast.LENGTH_SHORT).show();
+                } else if (loginRes.getResponse().equalsIgnoreCase("Wrong")) {
+                    Toast.makeText(getApplicationContext(), "Login Error : " + loginRes.getUser().getUsername(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Login Error", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<loginResponse2> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"Respones Error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Respones Error", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void moveToVerifyPage() {
+        Intent myIntent = new Intent(MainActivity.this, verifyEmailUser.class);
+        MainActivity.this.startActivity(myIntent);
     }
 
     private void moveToMainActivity() {
@@ -144,24 +150,25 @@ public class MainActivity extends AppCompatActivity {
 
     private void checkSession() {
         SessionManagement sessionManagement = new SessionManagement(MainActivity.this);
-        final User user =  sessionManagement.getSession();
+        final User user = sessionManagement.getSession();
         final String role = sessionManagement.getRole();
 
-        if(user != null){
+        if (user != null) {
 
-            if(role.equalsIgnoreCase("Admin")){
+            if (role.equalsIgnoreCase("Admin")) {
                 moveToAdminDashboard();
-            }
-            else if(role.equalsIgnoreCase("User")){
-                Intent myIntent = new Intent(MainActivity.this, Userhomepage.class);
-                MainActivity.this.startActivity(myIntent);
-                moveToMainActivity();
-            }
-            else if(role.equalsIgnoreCase("Storeworker")){
+            } else if (role.equalsIgnoreCase("User")) {
+                if(user.getEnabled().equals(Boolean.TRUE)) {
+                    Intent myIntent = new Intent(MainActivity.this, Userhomepage.class);
+                    MainActivity.this.startActivity(myIntent);
+                    moveToMainActivity();
+                }else {
+                    moveToVerifyPage();
+                }
+            } else if (role.equalsIgnoreCase("Storeworker")) {
                 moveToStoreworkerDashboard();
             }
-        }
-        else {
+        } else {
             //do nothing
         }
     }
@@ -171,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.this.startActivity(myIntent);
     }
 
-    private void moveToStoreworkerDashboard(){
+    private void moveToStoreworkerDashboard() {
         Intent myIntent = new Intent(MainActivity.this, StoreworkerDashboard.class);
         MainActivity.this.startActivity(myIntent);
     }

@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ee1_2_test.Activity.AdminEditUser;
 import com.example.ee1_2_test.Activity.AdmineditAuthor;
 import com.example.ee1_2_test.Model.AdminUserView;
 import com.example.ee1_2_test.Model.UserRole;
@@ -62,7 +63,8 @@ public class adminViewAllUsersAdapter extends RecyclerView.Adapter<adminViewAllU
             holder.editbtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                  //  Intent intent = new Intent(context, AdminEditUser.class);
+                    Intent intent = new Intent(context, AdminEditUser.class);
+                    context.startActivity(intent);
                 }
             });
     }

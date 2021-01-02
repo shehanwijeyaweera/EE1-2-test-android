@@ -25,17 +25,26 @@ public class OrdersAdapterAdmin extends RecyclerView.Adapter<OrdersAdapterAdmin.
     private ArrayList<Customer_orders> customer_orders = new ArrayList<>();
     private ArrayList<CustomerOrderItem> customerOrderItems = new ArrayList<>();
     private Context context;
+    private OnItemClickListener mListener;
 
     public OrdersAdapterAdmin(ArrayList<Customer_orders> customer_orders, Context context) {
         this.customer_orders = customer_orders;
         this.context = context;
     }
 
+    public interface OnItemClickListener{
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        mListener = listener;
+    }
+
     @NonNull
     @Override
     public OrdersAdapterAdmin.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.order_row_admin,parent,false);
-        return new OrdersAdapterAdmin.ViewHolder(view);
+        return new OrdersAdapterAdmin.ViewHolder(view, mListener);
     }
 
     @Override
@@ -47,6 +56,10 @@ public class OrdersAdapterAdmin extends RecyclerView.Adapter<OrdersAdapterAdmin.
         holder.tvShippingStatus.setText(customer_orders.get(position).getName());
         holder.tvFirstName.setText(customer_orders.get(position).getUser().getUserFName());
         holder.tvLastName.setText(customer_orders.get(position).getUser().getUserLName());
+
+        if(customer_orders.get(position).getStatus().matches("shipped")){
+            holder.shipped.setVisibility(View.INVISIBLE);
+        }
 
         holder.viewOrderbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,10 +85,10 @@ public class OrdersAdapterAdmin extends RecyclerView.Adapter<OrdersAdapterAdmin.
         private TextView tvShippingStatus;
         private TextView tvFirstName;
         private TextView tvLastName;
-        private Button viewOrderbtn;
+        private Button viewOrderbtn, shipped;
         private CardView mainLayout_admin;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
 
             tvOrderId = itemView.findViewById(R.id.orderID_orders_admin);
@@ -85,6 +98,19 @@ public class OrdersAdapterAdmin extends RecyclerView.Adapter<OrdersAdapterAdmin.
             tvFirstName = itemView.findViewById(R.id.orderFName_orders_admin);
             tvLastName = itemView.findViewById(R.id.orderLName_orders_admin);
             viewOrderbtn = itemView.findViewById(R.id.viewOrderbtn_orders_admin);
+            shipped = itemView.findViewById(R.id.shipbtn_orders_admin);
+
+            shipped.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(listener != null){
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
 
             mainLayout_admin = itemView.findViewById(R.id.ordersAdmin_mainLayout);
         }

@@ -68,14 +68,25 @@
             android:layout_marginTop="50dp" />
 
         <Button
+            android:id="@+id/viewOrderbtn_orders_admin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/viewOrderbtn_orders_admin"
-            android:text="View"
-            android:layout_marginLeft="20dp"
             android:layout_marginStart="275dp"
-            android:layout_marginTop="50dp" />
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="50dp"
+            android:text="View" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ship"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:layout_toRightOf="@+id/orderLName_orders_admin"
+            android:layout_toEndOf="@+id/orderLName_orders_admin"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/shipbtn_orders_admin"/>
 
 
     </RelativeLayout>

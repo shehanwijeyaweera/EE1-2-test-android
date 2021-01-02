@@ -139,4 +139,7 @@ public interface BookstoreApi {
 
     @GET("admin/deleteUser/{userID}")
     Call<loginResponse> deleteUser(@Path("userID") int id);
+
+    @GET("admin/markOrderAsShipped/{orderID}")
+    Call<loginResponse> markOrderAsShipped(@Path("orderID") int id);
 }

@@ -184,6 +184,7 @@ public class AddBookFragmentAdmin extends Fragment {
                     pubdate.setText("");
                     pubdate.setText("");
                     description.setText("");
+                    uploadImagepreview.setBackground(null);
                 } else if (loginRes.getResponse().matches("Failed")) {
                     //error message
                 }

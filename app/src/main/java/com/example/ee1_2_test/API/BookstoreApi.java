@@ -3,6 +3,7 @@ package com.example.ee1_2_test.API;
 import com.example.ee1_2_test.JSON.Checkout;
 import com.example.ee1_2_test.Model.AddbookSpinnerData;
 import com.example.ee1_2_test.Model.AdminDashboard;
+import com.example.ee1_2_test.Model.AdminUserView;
 import com.example.ee1_2_test.Model.Author;
 import com.example.ee1_2_test.Model.Book;
 import com.example.ee1_2_test.Model.CartItem;
@@ -132,4 +133,10 @@ public interface BookstoreApi {
     @Multipart
     @POST("admin/savebookImage/{bookId}")
     Call<loginResponse> saveBookImage(@Part MultipartBody.Part file, @Path("bookId") int bookID);
+
+    @GET("admin/getAllusers")
+    Call<List<AdminUserView>> getAllUsersAdmin();
+
+    @GET("admin/deleteUser/{userID}")
+    Call<loginResponse> deleteUser(@Path("userID") int id);
 }

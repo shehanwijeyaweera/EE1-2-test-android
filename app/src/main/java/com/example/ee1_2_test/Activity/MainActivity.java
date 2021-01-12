@@ -1,7 +1,11 @@
 package com.example.ee1_2_test.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricManager;
+import androidx.biometric.BiometricPrompt;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +30,7 @@ import com.google.gson.JsonParseException;
 
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.concurrent.Executor;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView register;
 
     private BookstoreApi bookstoreApi;
+
+    private BiometricPrompt biometricPrompt;
+    private BiometricPrompt.PromptInfo promptInfo;
+    private Executor executor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +88,33 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        executor = ContextCompat.getMainExecutor(this);
+
+        biometricPrompt = new BiometricPrompt(this, executor, new BiometricPrompt.AuthenticationCallback() {
+            @Override
+            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                super.onAuthenticationError(errorCode, errString);
+            }
+
+            @Override
+            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                super.onAuthenticationSucceeded(result);
+                moveToMainActivity();
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                super.onAuthenticationFailed();
+            }
+        });
+
+
+        promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                .setTitle("BookStore Authentication!")
+                .setNegativeButtonText("Cancel / Use Password")
+                .setConfirmationRequired(false)
+                .build();
     }
 
     private void loginfunction(String username, String password) {
@@ -159,9 +195,11 @@ public class MainActivity extends AppCompatActivity {
                 moveToAdminDashboard();
             } else if (role.equalsIgnoreCase("User")) {
                 if(user.getEnabled().equals(Boolean.TRUE)) {
-                    Intent myIntent = new Intent(MainActivity.this, Userhomepage.class);
-                    MainActivity.this.startActivity(myIntent);
-                    moveToMainActivity();
+                    BiometricManager biometricManager = BiometricManager.from(MainActivity.this);
+                    if(biometricManager.canAuthenticate() != BiometricManager.BIOMETRIC_SUCCESS){
+                        return;
+                    }
+                    biometricPrompt.authenticate(promptInfo);
                 }else {
                     moveToVerifyPage();
                 }

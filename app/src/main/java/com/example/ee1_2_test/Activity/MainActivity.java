@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ee1_2_test.API.BookstoreApi;
+import com.example.ee1_2_test.JSON.RequestLogin;
 import com.example.ee1_2_test.Model.ApiClient;
 import com.example.ee1_2_test.Model.Role;
 import com.example.ee1_2_test.Model.User;
@@ -122,7 +123,11 @@ public class MainActivity extends AppCompatActivity {
 
         bookstoreApi = ApiClient.getClient().create(BookstoreApi.class);
 
-        Call<loginResponse2> call = bookstoreApi.getloginRespones(username, password);
+        RequestLogin requestLogin = new RequestLogin();
+        requestLogin.setUsername(username);
+        requestLogin.setPassword(password);
+
+        Call<loginResponse2> call = bookstoreApi.getloginRespones(requestLogin);
 
         call.enqueue(new Callback<loginResponse2>() {
             @Override

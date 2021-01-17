@@ -1,6 +1,7 @@
 package com.example.ee1_2_test.API;
 
 import com.example.ee1_2_test.JSON.Checkout;
+import com.example.ee1_2_test.JSON.RequestLogin;
 import com.example.ee1_2_test.Model.AddbookSpinnerData;
 import com.example.ee1_2_test.Model.AdminDashboard;
 import com.example.ee1_2_test.Model.AdminUserView;
@@ -37,8 +38,8 @@ public interface BookstoreApi {
     @GET("book/{id}")
     Call<Book> getBookdetails(@Path("id") int bookid);
 
-    @GET("login/{username}/{password}")
-    Call<loginResponse2> getloginRespones(@Path("username")String username, @Path("password")String password);
+    @POST("login")
+    Call<loginResponse2> getloginRespones(@Body RequestLogin requestLogin);
 
     @GET("admindashboard")
     Call<AdminDashboard> getDashboardstats();
